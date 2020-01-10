@@ -1,4 +1,4 @@
-package sandbox.javafortesters;
+package javafortesters1;
 
 public class Point {
   double x;

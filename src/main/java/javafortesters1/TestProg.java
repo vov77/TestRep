@@ -1,6 +1,6 @@
-package sandbox.javafortesters;
+package javafortesters1;
 
-public class TestProg1 {
+public class TestProg {
   public static void main(String[] args) {
     System.out.println("testtesttest");
     Point p3 = new Point(100,50);
