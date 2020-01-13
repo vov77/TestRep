@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.TestGroup" tests="1" skipped="1" failures="0" errors="0" timestamp="2020-01-13T21:16:33" hostname="DESKTOP-ULH6INK" time="16.328">
+<testsuite name="test.selenium.TestGroup" tests="1" skipped="1" failures="0" errors="0" timestamp="2020-01-13T22:16:58" hostname="DESKTOP-ULH6INK" time="28.074">
   <properties/>
-  <testcase name="createGroup" classname="test.selenium.TestGroup" time="16.328">
+  <testcase name="createNewGroup" classname="test.selenium.TestGroup" time="28.074">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

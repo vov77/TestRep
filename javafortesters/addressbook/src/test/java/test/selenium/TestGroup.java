@@ -2,7 +2,6 @@ package test.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
@@ -22,39 +21,56 @@ public class TestGroup {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wait = new WebDriverWait(driver,10);
     //login
+    login("admin", "secret");
+
+  }
+
+  public void login(String username, String password) {
     driver.navigate().to("http://localhost/addressbook/");
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.name("user")).sendKeys(username);
     driver.findElement(By.name("pass")).click();
     driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.name("pass")).sendKeys(password);
     driver.findElement(By.xpath("//input[@value='Login']")).click();
-
   }
 
   @Test
-  public void createGroup(){
+  public void createNewGroup(){
 
-    //create new group
-    driver.findElement(By.xpath("//a[contains(text(),'groups')]")).click();
-    driver.findElement(By.xpath("//input[@name='new']")).click();
-    driver.findElement(By.xpath("//input[@name='group_name']")).click();
-    driver.findElement(By.xpath("//input[@name='group_name']")).sendKeys("Test100");
-    driver.findElement(By.xpath("//textarea[@name='group_header']")).click();
-    driver.findElement(By.xpath("//textarea[@name='group_header']")).sendKeys("Test110");
-    driver.findElement(By.xpath("//textarea[@name='group_footer']")).click();
-    driver.findElement(By.xpath("//textarea[@name='group_footer']")).sendKeys("Test111");
-    driver.findElement(By.xpath("//input[@name='submit']")).click();
-    //new group check
-    driver.findElement(By.xpath("//a[contains(text(),'group page')]")).click();
+    gotoGroups();
+    startNewGroup();
+    fillNewGroupFields(new GroupData("Test100", "Test110", "Test111"));
+    submitNewGroup();
+    gotoGroups();
 
-    driver.findElement(By.xpath("//input[@name='new']")).click();
-
-
+    startNewGroup();
 
 
   }
+
+  public void submitNewGroup() {
+    driver.findElement(By.xpath("//input[@name='submit']")).click();
+  }
+
+  public void fillNewGroupFields(GroupData groupData) {
+    driver.findElement(By.xpath("//input[@name='group_name']")).click();
+    driver.findElement(By.xpath("//input[@name='group_name']")).sendKeys(groupData.getGroupName());
+    driver.findElement(By.xpath("//textarea[@name='group_header']")).click();
+    driver.findElement(By.xpath("//textarea[@name='group_header']")).sendKeys(groupData.getGroupHeader());
+    driver.findElement(By.xpath("//textarea[@name='group_footer']")).click();
+    driver.findElement(By.xpath("//textarea[@name='group_footer']")).sendKeys(groupData.getGroupFooter());
+  }
+
+  public void startNewGroup() {
+    driver.findElement(By.xpath("//input[@name='new']")).click();
+  }
+
+  public void gotoGroups() {
+    driver.findElement(By.xpath("//a[contains(text(),'groups')]")).click();
+  }
+
   @AfterTest
   public void stop(){
     driver.close();
