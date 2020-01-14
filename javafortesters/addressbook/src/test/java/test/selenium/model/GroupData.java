@@ -1,4 +1,4 @@
-package test.selenium;
+package test.selenium.model;
 
 public class GroupData {
   private final String groupName;

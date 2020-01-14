@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="68.125" y="0.0">test.selenium.appmanager.AppManager</node>
+    <node x="150.0" y="222.0">test.selenium.testcases.DeleteTestGroup</node>
+    <node x="0.0" y="222.0">test.selenium.testcases.NewTestGroup</node>
+    <node x="51.125" y="122.0">test.selenium.testcases.TestBase</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="test.selenium.testcases.TestBase" target="test.selenium.appmanager.AppManager">
+      <point x="45.75" y="-25.0" />
+      <point x="188.375" y="97.0" />
+      <point x="179.875" y="97.0" />
+      <point x="37.25" y="36.0" />
+    </edge>
+    <edge source="test.selenium.testcases.NewTestGroup" target="test.selenium.testcases.TestBase">
+      <point x="32.5" y="-13.0" />
+      <point x="97.5" y="197.0" />
+      <point x="119.75" y="197.0" />
+      <point x="-22.875" y="25.0" />
+    </edge>
+    <edge source="test.selenium.testcases.DeleteTestGroup" target="test.selenium.testcases.TestBase">
+      <point x="37.75" y="-13.0" />
+      <point x="263.25" y="197.0" />
+      <point x="211.25" y="197.0" />
+      <point x="68.625" y="25.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="409.0" y="217.72727272727272" />
+  <SelectedNodes>
+    <node>test.selenium.appmanager.AppManager</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
