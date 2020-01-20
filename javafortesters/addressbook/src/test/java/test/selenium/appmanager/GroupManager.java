@@ -5,7 +5,11 @@ import org.openqa.selenium.WebDriver;
 import test.selenium.model.GroupData;
 
 public class GroupManager {
-  public WebDriver driver;
+  private WebDriver driver;
+
+  public GroupManager(WebDriver driver) {
+    this.driver = driver;
+  }
 
   public void startNewGroup() {
     driver.findElement(By.xpath("//input[@name='new']")).click();
