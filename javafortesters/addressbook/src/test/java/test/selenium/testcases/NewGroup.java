@@ -3,7 +3,7 @@ package test.selenium.testcases;
 import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 
-public class NewTestGroup extends TestBase {
+public class NewGroup extends TestBase {
 
   @Test
   public void createNewGroup(){

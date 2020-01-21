@@ -11,6 +11,13 @@ with Selenium:
     driver = null;
 _______________________________________________________________________________________________________________________________________________________
 3. Refactoring:
+—делать общий базовый класс дл€ тестов TestBase, перенести вспомогательные методы в него (включа€ инициализацию и завершение)
+—делать класс ApplicationManager и перенести вспомогательные методы в него, это рекомендуетс€ делать при помощи рефакторинга в два шага, 
+как описано в лекции "«амен€ем наследование на делегирование".
+¬ыделить из ApplicationManager специализированные классы-помощники NavigationManager, GroupManager и ContactManager, перенести в них из 
+ApplicationManager соответствующие вспомогательные методы.
+—оздать дл€ этих вспомогательных классов общий базовый класс BaseManager, перенести в него низкоуровневые вспмогательные методы (заполнение 
+отдельного пол€, нажатие на кнопку или ссылку).
 
 1) Refactor->Extract->Method (Ctr+Alt+M) - move actions inside methods (e.g. goToGroup, fillGroupFields etc.)
 2) Refactor->Extract->Parameter (Ctr+Alt+P) - move text and other dynamic parameters and test data (passwords, names, etc) into variables

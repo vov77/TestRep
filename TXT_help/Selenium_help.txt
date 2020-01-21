@@ -25,6 +25,8 @@ driver.navigate().to("http://localhost/addressbook/"); DO NOT use www.... !!!
 4. Actions with windows (can not open new window, but JS can be used)
 --------------------------------------------------------------------------------------
 5. Actions with popups
+wd.switchTo().alert().accept(); //close pop up with OK/Cancel
+
 public static boolean isAlerPresent(ChromeDriver driver){
   try{
     driver.switchTo().alert();

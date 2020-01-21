@@ -10,6 +10,7 @@ public class AppManager {
   private SessionManager sessionManager;
   private NavigationManager navigationManager;
   private GroupManager groupManager;
+  private ContactManager contactManager;
   public WebDriver driver;
   public WebDriverWait wait;
 
@@ -18,6 +19,7 @@ public class AppManager {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wait = new WebDriverWait(driver,10);
     groupManager = new GroupManager(driver);
+    contactManager = new ContactManager(driver);
     navigationManager = new NavigationManager(driver);
     sessionManager = new SessionManager(driver);
     //login
@@ -39,5 +41,9 @@ public class AppManager {
 
   public SessionManager getSessionManager() {
     return sessionManager;
+  }
+
+  public ContactManager getContactManager() {
+    return contactManager;
   }
 }
