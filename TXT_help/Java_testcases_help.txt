@@ -1,0 +1,81 @@
+1. Add package under Test folder, add Tests class. Main class is not needed
+---------------------------------------------------------------------------------------------------------------------------------------------
+2. Add @Test annotation, add code (e.g. assert ... == ... or Assert.accertEquals(..,..)
+with Selenium:
+@BeforeTest //driver initialization
+    driver = new ChromeDriver();
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    wait = new WebDriverWait(groupManager.driver,10);
+@AfterTest //driver closed
+    driver.close();
+    driver = null;
+_______________________________________________________________________________________________________________________________________________________
+3. Refactoring:
+
+1) Refactor->Extract->Method (Ctr+Alt+M) - move actions inside methods (e.g. goToGroup, fillGroupFields etc.)
+2) Refactor->Extract->Parameter (Ctr+Alt+P) - move text and other dynamic parameters and test data (passwords, names, etc) into variables
+3) Refactor->Extract->Parameter Object - move actions to fill huge forms into class (GroupData/ContactData etc) and pass object of new class as 
+method parameter (fillGroupForm)
+4) Use inheritance to create TestBase class with methods that can be used for other tests:
+ class GroupCreationTests extends TestBase -> create TestBase class, then  Refactor -> Pull members up and move all generic methods to TestBase including
+methods under @BeforeTest and @AfterTest. Don't forget to change private methods to public in TestBase!!
+In GroupCreationTests class we leave only methods that are used to run test steps:
+  @Test
+  public void createNewGroup(){
+    gotoGroups();
+    startNewGroup();
+    fillNewGroupFields(new GroupData("Test100", "Test110", "Test111"));
+    submitNewGroup();
+  }
+All methods from parent TestBase class are inherited by all child classes, so we don't need to add @BeforeTest and @AfterTest to every new test class 
+which extends TestBase. 
+To see dependencies Diagram can be used.
+
+5) Methods from TestBase class are divided into new classes by delegation: 
+ - create init() and finish() methods for @BeforeTest and @AfterTest
+ - TestBase extends ApplicationManager -> create ApplicationManager class -> Refactor -> Pull members up -> move all methods up, 
+including init()/finish() and leave in TestBase class start() and stop() methods only
+ - Refactor -> Replace Inheritence with Delegation -> field name - appManager:
+
+public class TestBase {
+  protected final AppManager appManager = new AppManager();
+  @BeforeTest
+  public void start() throws Exception {
+    appManager.initial();
+  }
+  @AfterTest
+  public void stop(){
+    appManager.finish();
+  }
+}
+
+1st Layer: class with test cases with simple methods + TestBase class with Start/End (test logic) -> move to new package "tests"
+2nd Layer: class AppManager contains interaction with test system methods -> move to new package "appManager" (do not forget to rename protected methods 
+to public!!)
+3d - move GroupData class to new package "model"
+
+6) AppManager is still huge - need to divide it:
+- extend with pull members up group methods to GroupManager, contacts to ContactsManager plus NavigationManager 
+- copy back to AppManager "public WebDriver driver;" in GroupManager set driver to "private WebDriver driver";
+- in AppManager initial() before login set groupManager = new GroupManager(driver); -> click to Create Constructor in GroupManager with 
+public GroupManager(WebDriver driver) {
+    this.driver = driver;
+  }
+and delete groupManager. in groupManager.driver that turned red
+- delete final in GroupManager groupManager declaration in AppManager class
+- then Replace Inheritance with delegate with Generate getter check box!!!
+- repeat all steps above for gotoGroups() -> move to NavigationManager
+- repeat all steps above for login() -> move to SessionManager
+
+7) for GroupManager select click/clear/sendkeys methods -> Refactor->Extract->Method (Ctr+Alt+M) -> type
+ - select By.xpath("//input[@name='group_name']") -> Refactor->Extract->Parameter (Ctr+Alt+P) -> locator -> copy it and change for other 2 methods
+ - select groupData.getGroupName() -> Refactor->Extract->Parameter (Ctr+Alt+P) -> inputText
+ - select driver.findElement(By.xpath("//input[@name='submit']")).click() -> (Ctr+Alt+M) -> click
+ - in new click() select By.xpath("//input[@name='submit']") -> (Ctr+Alt+P) -> locator
+
+8) Create Base class for Manager classes:
+- GroupManager extends ManagerBase, Refactor -> Pull members up -> move click() and type() methods up, 
+- SessionManager extends ManagerBase, update constructor to super(driver); delete private WebDriver driver;
+- replace with type() 3 methods to sendKeys and with click() click action
+- do the same in NavigationManager
+

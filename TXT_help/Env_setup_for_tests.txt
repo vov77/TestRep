@@ -1,0 +1,54 @@
+1. 
+Install JAVA SDK SE Dev + create JAVA_HOME with - c:\Program Files\Java\jdk-13.0.1\ - and set up PATH with - %JAVA_HOME%/bin; -
+{
+In Search, search  System (Control Panel). Click the Advanced system settings link.
+Click Environment Variables. 
+}
+to check - run cmd: where java
+to run java from cmd: javac Test.java -> creates Test.class -> from cmd: java Test
+__________________________________________________________________________________________________________________________________
+2. 
+Ver. control: Sign in to GitHub -> New rep + gitIgnore Gradle or Java, then Install GitHub Desktop + clone rep from git
+__________________________________________________________________________________________________________________________________
+3. 
+Download and unzip Gradle (Maven or Ant use xml for config):
+a) without IntelliJ: 
+add project\src\main\java and project\src\test\java to gradle-2.10\bin
+ + add build.gradle to \src (see IntellijI projects how to add apply plugin: 'java' + apply plugin: 'application' then setup mainClassName = '-' if needed)
+cmd from gradle\bin : gradle build + gradle run + gradle wrapper (after wrapper installed, use gradlew build or gradlew run)
+b) with IntelliJ: create or import module Gradle 
+for more info on Gradle check https://docs.gradle.org/current/userguide/userguide.html
+__________________________________________________________________________________________________________________________________
+4. 
+Install IntelliJ (from rutracker) -> Empty project -> Set Project SDK and set is as default
+Add Gradle module, use Project SDK (check SDK vers - may cause error)
+__________________________________________________________________________________________________________________________________
+5. 
+Add test framework -  TestNG(or JUnit) libs - search the latest testng lib in search.maven.org and add to build.gradle:
+repositories {mavenCentral()}
+dependencies {compile 'org.testng:testng:7.0.0'}
+test { useTestNG()}
+Check added libs in ExternalLibs in ItelliJ
+__________________________________________________________________________________________________________________________________
+6.
+Add Selenium lib and module
+dependencies {compile 'org.seleniumhq.selenium:selenium-java:3.141.59'} 
+or {testCompile 'org.seleniumhq.selenium:selenium-java:3.141.59'} if we use tests only
+check for the latest stable ver on Selenium site
+then check Maven Central
+__________________________________________________________________________________________________________________________________
+7. Instal needed browser driver (e.g. Chromium ) check for the latest stable ver on Selenium site
+then check Maven Central
+Put chromedriver.exe file into C:\WebDriver\bin\ and add to PATH variable 
+__________________________________________________________________________________________________________________________________
+8. Install Selenium IDE plugin from browser plugin store (good to find locators)
+__________________________________________________________________________________________________________________________________
+
+
+XAMPP Server (Apache + PHP + MySQL)
+Внимание: не берите версию XAMPP, в состав которой входит PHP 7, учебное приложение в этой версии не будет работать!!!
+
+Установить локальный веб-сервер в соответствии с инструкцией http://selenium2.ru/articles/136-installing-xampp.html
+
+Учебное приложение (адресная книга с веб-интерфейсом)
+Загрузить учебное приложение https://s3-eu-west-1.amazonaws.com/stru-webinars/addressbook.zip

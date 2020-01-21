@@ -1,0 +1,98 @@
+See Selenium Web Driver and browser driver (e.g. Chromium) setup in Environment setup file
+
+Selenium can not run already started browers, it needs to start it itself
+_____________________________________________________________________________________________________________
+
+Comands:
+
+1. Driver initialisation: 
+    driver = new ChromeDriver();
+If web driver did not start, check browser driver, or vpn/antivirus/firewall
+//driver closed
+    driver.close();
+    driver = null;
+--------------------------------------------------------------------------------------
+2. Driver setup (timeouts), browser setup (delete cookies etc)
+WebDriverWait wait = new WebDriverWait(driver,10); //wait to start driver
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //timeout to find elements
+
+--------------------------------------------------------------------------------------
+3. Actions with pages
+driver.navigate().to("http://localhost/addressbook/"); DO NOT use www.... !!!
+ - can be also used to simulate open new page from a link 
+ - or if we want to shortcut several inclosed pages to go to the particular page
+--------------------------------------------------------------------------------------
+4. Actions with windows (can not open new window, but JS can be used)
+--------------------------------------------------------------------------------------
+5. Actions with popups
+public static boolean isAlerPresent(ChromeDriver driver){
+  try{
+    driver.switchTo().alert();
+    return true; }
+  catch (NoAlertPresentExeption e){
+    return faulse; }
+    }
+
+--------------------------------------------------------------------------------------
+6. Find elements on page
+driver.findElement(By.name("user"))//By.xpath, By.css, By.id, By.class etc. - returns one element (assigns dynamic id for the element, changed after page refresh!!!)
+   Possible problems:
+   - invalid locator
+   - element is not on the page ( e.g. locator changed for dynamic page after refresh, or after compilation of the new ver.)
+   - element not found - need to wait
+   - element is not on active page or frame (need to go there first)
+findElements - returns a List of elements (empty List is returned if not found, no exeptions thrown)
+--------------------------------------------------------------------------------------
+7. Get elements properties/attributes 
+--------------------------------------------------------------------------------------
+8. Actions with elements - use actions right after element found/ element should be visible on page!!!
+driver.findElement(By.name("pass")).click();
+driver.findElement(By.name("pass")).clear();
+driver.findElement(By.name("pass")).sendKeys(password);
+driver.findElement(By.xpath("//input[@value='Login']")).click();
+--------------------------------------------------------------------------------------
+9. Actions with frames
+10. JS execution
+_____________________________________________________________________________________________________________
+
+Locators:
+Шпаргалка по языку запросов CSS 
+https://saucelabs.com/resources/articles/selenium-tips-css-selectors
+
+Шпаргалка по языкам запросов CSS и XPath
+https://www.simple-talk.com/dotnet/.net-framework/xpath,-css,-dom-and-selenium-the-rosetta-stone
+
+Use Recorder to record locators (e.g. Selenium IDE)
+
+Basics:
+
+ DOM: <body><form><input type="text" name="text"></form></body>
+ xpath: //input[@name="test"]
+ css: input[name="test"]
+      tag(text input field)[attribute] - search inside all DOM levels
+
+ DOM: <body><form name="test"><input type="text" name="text"></form></body>
+ xpath: //form[@name="test"]//input
+ css: form[name="test"] input
+search text input inside form with name(text input field)[attribute] - search inside all levels
+ xpath: //form[@name="test"]/input
+ css: form[name="test"] > input - search inside current level
+
+ DOM: <body><form id="test"><input type="text" name="text"></form></body>
+ xpath: //form[@id="test"]//input
+ css: form[id="test"] input OR form#"test" input
+search text input inside form with id(text input field)[attribute] - search inside all levels
+
+ DOM: <body><form class="test"><input type="text" name="text"></form></body>
+ xpath: //form[@class="test"]//input
+ css: form[class="test"] input OR form.test input (includes all element classes (e.g. font/color/style))
+search text input inside form with class(text input field)[attribute] - search inside all levels
+CLASS is used to identify element style!!!
+
+css cons: short forms above
+xpath cons:
+  search by element text (link text) - //a[.="text"]
+  parent element (css works with child only!) - //input[@id="test2"]/.. - one level up from input element in DOM tree
+  subrequests //form[./input[@id="test2"]] - input with id inside form
+
+

@@ -4,35 +4,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import test.selenium.model.GroupData;
 
-public class GroupManager {
-  private WebDriver driver;
+public class GroupManager extends BaseManager {
 
   public GroupManager(WebDriver driver) {
-    this.driver = driver;
+    super(driver);
   }
 
   public void startNewGroup() {
-    driver.findElement(By.xpath("//input[@name='new']")).click();
+    click(By.xpath("//input[@name='new']"));
   }
 
   public void submitNewGroup() {
-    driver.findElement(By.xpath("//input[@name='submit']")).click();
+    click(By.xpath("//input[@name='submit']"));
   }
 
   public void fillNewGroupFields(GroupData groupData) {
-    driver.findElement(By.xpath("//input[@name='group_name']")).click();
-    driver.findElement(By.xpath("//input[@name='group_name']")).sendKeys(groupData.getGroupName());
-    driver.findElement(By.xpath("//textarea[@name='group_header']")).click();
-    driver.findElement(By.xpath("//textarea[@name='group_header']")).sendKeys(groupData.getGroupHeader());
-    driver.findElement(By.xpath("//textarea[@name='group_footer']")).click();
-    driver.findElement(By.xpath("//textarea[@name='group_footer']")).sendKeys(groupData.getGroupFooter());
+    type(By.xpath("//input[@name='group_name']"), groupData.getGroupName());
+    type(By.xpath("//textarea[@name='group_header']"), groupData.getGroupHeader());
+    type(By.xpath("//textarea[@name='group_footer']"), groupData.getGroupFooter());
   }
 
   public void selectGroup() {
-    driver.findElement(By.name("selected[]")).click();
+    click(By.name("selected[]"));
   }
 
   public void submitToDeleteGroup() {
-    driver.findElement(By.xpath("(//input[@name='delete'])[2]")).click();
+    click(By.xpath("(//input[@name='delete'])[2]"));
   }
 }
