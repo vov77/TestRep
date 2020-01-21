@@ -31,4 +31,12 @@ public class GroupManager extends BaseManager {
   public void submitToDeleteGroup() {
     click(By.xpath("(//input[@name='delete'])[2]"));
   }
+
+  public void initGroupMod() {
+    click(By.name("edit"));
+  }
+
+  public void updateGroup() {
+    click(By.name("update"));
+  }
 }

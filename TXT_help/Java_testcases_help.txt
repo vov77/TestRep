@@ -79,3 +79,9 @@ and delete groupManager. in groupManager.driver that turned red
 - replace with type() 3 methods to sendKeys and with click() click action
 - do the same in NavigationManager
 
+9) Create GroupModificationTests class:
+ - extends TestBase
+ - copy appManager.getNavigationManager().gotoGroups(); and appManager.getGroupManager().selectGroup(); from DeleteGroup
+ - add new appManager.getGroupManager().initGroupMod(); -> create new method, use click() with locator from Recorder
+ - add appManager.getGroupManager().fillNewGroupFields(new GroupData ()) with new data (e.g. (new GroupData("test9", "test99", "test999"))
+ - add new appManager.getGroupManager().updateGroup(); -> create new method, use click() with locator from Recorder
