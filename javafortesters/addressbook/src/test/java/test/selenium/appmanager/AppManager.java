@@ -2,6 +2,9 @@ package test.selenium.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -13,9 +16,26 @@ public class AppManager {
   private ContactManager contactManager;
   public WebDriver driver;
   public WebDriverWait wait;
+  private String browser;
+
+  public AppManager(String browser) {
+    this.browser = browser;
+  }
 
   public void initial() {
-    driver = new ChromeDriver();
+
+    switch (browser) {
+      case BrowserType.CHROME:
+        driver = new ChromeDriver();
+        break;
+      case BrowserType.EDGE:
+        driver = new EdgeDriver();
+        break;
+      case BrowserType.FIREFOX:
+        driver = new FirefoxDriver();
+        break;
+    }
+
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wait = new WebDriverWait(driver,10);
     groupManager = new GroupManager(driver);
