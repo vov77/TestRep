@@ -17,8 +17,13 @@ public class BaseManager {
 
   public void type(By locator, String inputText) {
     click(locator);
-    driver.findElement(locator).clear();
-    driver.findElement(locator).sendKeys(inputText);
+    if(inputText != null) {
+      String currentText = driver.findElement(locator).getAttribute("value");
+      if(!currentText.equals(inputText)) {
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(inputText);
+      }
+    }
   }
   public boolean isAlertPresent () {
     try{

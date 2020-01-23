@@ -112,3 +112,11 @@ switch (browser) {
     }
  - don't forget to download driver for Edge/Firfox and put it to dir that written in PATH (C:\WebDriver\bin) then restart IDE
 ___________________________________________________________________________________________________________________________________________________
+ 5. 
+- Default input values handling: Add "null" for inputText (for group/contact creation or change) if we don't want to change text -> in BaseManager for 
+  public void type(By locator, String inputText) add if(inputText != null) (else is empty here)
+- Add check if current input value is the same: 
+      String currentText = driver.findElement(locator).getAttribute("value");
+      if(!currentText.equals(inputText))
+___________________________________________________________________________________________________________________________________________________
+6. 

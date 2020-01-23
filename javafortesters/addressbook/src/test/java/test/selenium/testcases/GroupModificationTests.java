@@ -9,7 +9,7 @@ public class GroupModificationTests extends TestBase {
     appManager.getNavigationManager().gotoGroups();
     appManager.getGroupManager().selectGroup();
     appManager.getGroupManager().initGroupMod();
-    appManager.getGroupManager().fillNewGroupFields(new GroupData("test9", "test99", "test999"));
+    appManager.getGroupManager().fillNewGroupFields(new GroupData("test9", "test99", null));
     appManager.getGroupManager().updateGroup();
     appManager.getNavigationManager().gotoGroups();
 
