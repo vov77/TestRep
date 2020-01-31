@@ -2,6 +2,7 @@ package test.selenium.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class BaseManager {
@@ -31,6 +32,15 @@ public class BaseManager {
       return true;
        }
     catch (NoAlertPresentException e){
+      return false;
+    }
+  }
+
+  protected boolean isElementPresent(By locator) {
+    try {
+      driver.findElements(locator);
+      return true;
+    } catch (NoSuchElementException e) {
       return false;
     }
   }

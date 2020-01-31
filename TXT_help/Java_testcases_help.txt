@@ -119,4 +119,33 @@ ________________________________________________________________________________
       String currentText = driver.findElement(locator).getAttribute("value");
       if(!currentText.equals(inputText))
 ___________________________________________________________________________________________________________________________________________________
-6. 
+6. Adding if/else to handle different elements on similar pages/forms (e.g. Group field in New Contact form is the only field different from Modify Contact)
+- add new String group parameter in public ContactData() constructor, add getter for String group (inside ContactData class)
+- in NewContact class add e.g. "Test100" for appManager.getContactManager().fillNewContactFields() and for ContactModification add null for String group 
+- in ContactManager add new step to select group name in dropdown inside fillNewContactFields(ContactData contactData):
+
+if (isElementPresent(By.name("new_group"))) {
+      new Select((driver.findElement(By.name("new_group")))).selectByVisibleText(contactData.getGroup());
+    }
+  }
+
+  private boolean isElementPresent(By locator) {
+    try {
+      driver.findElements(locator);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  } 
+
+- move isElementPresent(By locator) to BaseManager using Reactor -> pullmemberup
+- add new boolean creation parameter for fillNewContactFields(), then add in CreateContact true for fillNewContactFields() and false in ModifyConact
+- in Contact manager change dropdown check to:
+//select group dropdown
+    if (creation) {
+      new Select((driver.findElement(By.name("new_group")))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group"))); - !!! isElementPresent always returns true, see code for workaround
+    }
+______________________________________________________________________________________________________________________________________________________
+
