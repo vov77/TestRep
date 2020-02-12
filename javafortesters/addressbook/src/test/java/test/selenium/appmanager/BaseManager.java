@@ -38,7 +38,7 @@ public class BaseManager {
 
   protected boolean isElementPresent(By locator) {
     try {
-      driver.findElements(locator);
+      driver.findElement(locator);
       return true;
     } catch (NoSuchElementException e) {
       return false;

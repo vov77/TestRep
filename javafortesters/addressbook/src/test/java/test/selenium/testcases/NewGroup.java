@@ -9,9 +9,7 @@ public class NewGroup extends TestBase {
   public void createNewGroup(){
 
     appManager.getNavigationManager().gotoGroups();
-    appManager.getGroupManager().startNewGroup();
-    appManager.getGroupManager().fillNewGroupFields(new GroupData("Test100", "Test110", "Test111"));
-    appManager.getGroupManager().submitNewGroup();
+    appManager.getGroupManager().createGroup(new GroupData("Test100", "Test110", "Test111"));
     appManager.getNavigationManager().gotoGroups();
   }
 }

@@ -10,13 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class AppManager {
-  private SessionManager sessionManager;
-  private NavigationManager navigationManager;
-  private GroupManager groupManager;
-  private ContactManager contactManager;
+  public SessionManager sessionManager;
+  public NavigationManager navigationManager;
+  public GroupManager groupManager;
+  public ContactManager contactManager;
   public WebDriver driver;
   public WebDriverWait wait;
-  private String browser;
+  public String browser;
 
   public AppManager(String browser) {
     this.browser = browser;

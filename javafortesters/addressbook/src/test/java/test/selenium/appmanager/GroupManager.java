@@ -39,4 +39,14 @@ public class GroupManager extends BaseManager {
   public void updateGroup() {
     click(By.name("update"));
   }
+
+  public void createGroup(GroupData groupData) {
+    startNewGroup();
+    fillNewGroupFields(groupData);
+    submitNewGroup();
+  }
+
+  public boolean isThereGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }

@@ -29,18 +29,7 @@ public class ContactManager extends BaseManager{
     if (creation) {
       new Select((driver.findElement(By.name("new_group")))).selectByVisibleText(contactData.getGroup());
     } else {
-      //assertFalse(isElementPresent(By.name("new_group"))); - returns true, isElementPresent doesn't work
-      boolean s;
-        try
-        {
-          driver.findElement(By.name("new_group"));
-          s = true;
-        }
-        catch (Exception e)
-        {
-          s = false;
-        }
-        assertFalse(s);
+      assertFalse(isElementPresent(By.name("new_group")));
     }
   }
 
@@ -59,5 +48,15 @@ public class ContactManager extends BaseManager{
 
   public void updateContact() {
     click(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public void createContact(ContactData contactData, boolean creation) {
+    startNewContact();
+    fillNewContactFields(contactData, creation);
+    submitNewContact();
+  }
+
+  public boolean isThereContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
