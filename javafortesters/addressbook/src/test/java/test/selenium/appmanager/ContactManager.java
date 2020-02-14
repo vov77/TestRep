@@ -59,4 +59,7 @@ public class ContactManager extends BaseManager{
   public boolean isThereContact() {
     return isElementPresent(By.name("selected[]"));
   }
+  public int getContactCount() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
 }

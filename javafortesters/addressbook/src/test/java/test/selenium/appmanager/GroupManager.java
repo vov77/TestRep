@@ -49,4 +49,7 @@ public class GroupManager extends BaseManager {
   public boolean isThereGroup() {
     return isElementPresent(By.name("selected[]"));
   }
+  public int getGroupCount() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
 }
