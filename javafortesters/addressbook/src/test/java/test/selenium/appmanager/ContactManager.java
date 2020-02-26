@@ -2,8 +2,13 @@ package test.selenium.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import test.selenium.model.ContactData;
+import test.selenium.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.testng.Assert.assertFalse;
 
@@ -61,5 +66,17 @@ public class ContactManager extends BaseManager{
   }
   public int getContactCount() {
     return driver.findElements(By.name("selected[]")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<>();
+    List<WebElement> elements = driver.findElements(By.name("entry"));
+    for(WebElement element: elements){
+      String name = element.getText();
+      ContactData contact = new ContactData(name, null, null, null, null);
+      contacts.add(contact);
+      System.out.println(name);
+    }
+    return contacts;
   }
 }

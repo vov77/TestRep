@@ -155,4 +155,5 @@ ________________________________________________________________________________
   public void selectContact(int index) {
     driver.findElements(By.name("selected[]")).get(index).click();
   }
-11.
+11. Added List<GroupData> getGroupList() / List<ContactData> getContactList() methods to get Lists of groups/contacts from WebElements
+
