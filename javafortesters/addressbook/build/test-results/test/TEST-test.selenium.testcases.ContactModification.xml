@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.ContactModification" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-14T15:06:14" hostname="DESKTOP-ULH6INK" time="34.714">
-  <properties/>
-  <testcase name="contactMod" classname="test.selenium.testcases.ContactModification" time="34.714"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

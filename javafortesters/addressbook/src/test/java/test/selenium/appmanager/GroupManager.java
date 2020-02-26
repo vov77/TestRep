@@ -24,8 +24,8 @@ public class GroupManager extends BaseManager {
     type(By.xpath("//textarea[@name='group_footer']"), groupData.getGroupFooter());
   }
 
-  public void selectGroup() {
-    click(By.name("selected[]"));
+  public void selectGroup(int index) {
+    driver.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void submitToDeleteGroup() {

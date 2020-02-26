@@ -15,7 +15,7 @@ public class DeleteTestGroup extends TestBase {
       appManager.getNavigationManager().gotoGroups();
     }
     groupCountBefore = appManager.getGroupManager().getGroupCount();
-    appManager.getGroupManager().selectGroup();
+    appManager.getGroupManager().selectGroup(groupCountBefore-1);
     appManager.getGroupManager().submitToDeleteGroup();
     appManager.getNavigationManager().gotoGroups();
     groupCountAfter = appManager.getGroupManager().getGroupCount();

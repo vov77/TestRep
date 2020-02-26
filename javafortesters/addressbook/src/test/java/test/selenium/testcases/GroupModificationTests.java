@@ -14,7 +14,7 @@ public class GroupModificationTests extends TestBase {
       appManager.getNavigationManager().gotoGroups();
     }
     groupCountBefore = appManager.getGroupManager().getGroupCount();
-    appManager.getGroupManager().selectGroup();
+    appManager.getGroupManager().selectGroup(groupCountBefore-1);
     appManager.getGroupManager().initGroupMod();
     appManager.getGroupManager().fillNewGroupFields(new GroupData("test9", "test99", null));
     appManager.getGroupManager().updateGroup();

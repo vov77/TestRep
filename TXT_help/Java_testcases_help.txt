@@ -151,4 +151,8 @@ ________________________________________________________________________________
 7. Page download speed optimization (speed up test execution) in NavigationManager (if page download speed is low):
 8. Add if/else for test preconditions (e.g. for Group/Contact delete ot modification to check if there is a Group/Contact to delete/modify)
 9. Add elements counters and Assert.assertEquals(contactCountBefore, contactCountAfter) for all tests with groups and contacts
-10. 
+10. Add contact/group selection by index:
+  public void selectContact(int index) {
+    driver.findElements(By.name("selected[]")).get(index).click();
+  }
+11.
