@@ -151,9 +151,12 @@ ________________________________________________________________________________
 7. Page download speed optimization (speed up test execution) in NavigationManager (if page download speed is low):
 8. Add if/else for test preconditions (e.g. for Group/Contact delete ot modification to check if there is a Group/Contact to delete/modify)
 9. Add elements counters and Assert.assertEquals(contactCountBefore, contactCountAfter) for all tests with groups and contacts
-10. Add contact/group selection by index:
+10. Add contact/group selection from a list by index:
   public void selectContact(int index) {
     driver.findElements(By.name("selected[]")).get(index).click();
   }
-11. Added List<GroupData> getGroupList() / List<ContactData> getContactList() methods to get Lists of groups/contacts from WebElements
+11. Collections formed - Added List<GroupData> getGroupList() / List<ContactData> getContactList() methods to get Lists of groups/contacts from WebElements
+12. Collections compearing - Added   before.remove(before.size() -1);  Assert.assertEquals(before, after); for group/contact delete tests
+    Generated toString() and equals Override in Group/Contact Data
+13. Compare HashSets for Group/Contact modifications 
 

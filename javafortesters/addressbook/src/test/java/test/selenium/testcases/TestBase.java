@@ -8,10 +8,6 @@ import test.selenium.appmanager.AppManager;
 public class TestBase {
 
   protected final AppManager appManager = new AppManager(BrowserType.CHROME);
-  public int groupCountBefore;
-  public int groupCountAfter;
-  public int contactCountBefore;
-  public int contactCountAfter;
 
   @BeforeTest
 

@@ -4,6 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 
+import java.util.HashSet;
+import java.util.List;
+
 public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification(){
@@ -13,14 +16,19 @@ public class GroupModificationTests extends TestBase {
       appManager.getGroupManager().createGroup(new GroupData("Test100", "Test110", "Test111"));
       appManager.getNavigationManager().gotoGroups();
     }
-    groupCountBefore = appManager.getGroupManager().getGroupCount();
-    appManager.getGroupManager().selectGroup(groupCountBefore-1);
+    List<GroupData> before = appManager.getGroupManager().getGroupList();
+    appManager.getGroupManager().selectGroup(before.size() -1);
     appManager.getGroupManager().initGroupMod();
-    appManager.getGroupManager().fillNewGroupFields(new GroupData("test9", "test99", null));
+    GroupData group = new GroupData(before.get(before.size()-1).getGroupId(),"test9", "test99", null);
+    appManager.getGroupManager().fillNewGroupFields(group);
     appManager.getGroupManager().updateGroup();
     appManager.getNavigationManager().gotoGroups();
-    groupCountAfter = appManager.getGroupManager().getGroupCount();
-    Assert.assertEquals(groupCountBefore, groupCountAfter);
+    List<GroupData> after = appManager.getGroupManager().getGroupList();
+    Assert.assertEquals(before.size(), after.size());
+
+    before.remove(before.size()- 1);
+    before.add(group);
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
   }
 

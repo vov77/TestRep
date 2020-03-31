@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import test.selenium.model.ContactData;
-import test.selenium.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +46,8 @@ public class ContactManager extends BaseManager{
     driver.switchTo().alert().accept();
   }
 
-  public void initContactMod() {
-    click(By.xpath("//img[@alt='Edit']"));
+  public void initContactMod(int index) {
+    driver.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
   }
 
   public void updateContact() {
@@ -73,9 +72,10 @@ public class ContactManager extends BaseManager{
     List<WebElement> elements = driver.findElements(By.name("entry"));
     for(WebElement element: elements){
       String name = element.getText();
-      ContactData contact = new ContactData(name, null, null, null, null);
+      String id = element.findElement(By.name("selected[]")).getAttribute("value");
+      ContactData contact = new ContactData(id, name, null, null, null, null);
       contacts.add(contact);
-      System.out.println(name);
+      //System.out.println(name);
     }
     return contacts;
   }
