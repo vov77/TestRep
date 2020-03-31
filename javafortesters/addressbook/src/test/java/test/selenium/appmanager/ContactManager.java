@@ -72,7 +72,7 @@ public class ContactManager extends BaseManager{
     List<WebElement> elements = driver.findElements(By.name("entry"));
     for(WebElement element: elements){
       String name = element.getText();
-      String id = element.findElement(By.name("selected[]")).getAttribute("value");
+      int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
       ContactData contact = new ContactData(id, name, null, null, null, null);
       contacts.add(contact);
       //System.out.println(name);

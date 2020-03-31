@@ -158,5 +158,6 @@ ________________________________________________________________________________
 11. Collections formed - Added List<GroupData> getGroupList() / List<ContactData> getContactList() methods to get Lists of groups/contacts from WebElements
 12. Collections compearing - Added   before.remove(before.size() -1);  Assert.assertEquals(before, after); for group/contact delete tests
     Generated toString() and equals Override in Group/Contact Data
-13. Compare HashSets for Group/Contact modifications 
+13. Compare HashSets for Group/Contact modifications, add id to evoid dupplicates String id = element.findElement(By.name("selected[]")).getAttribute("value");
+14. Update gr/cont creation tests with finding max id (change id from String to int)
 

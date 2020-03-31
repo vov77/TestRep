@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class NewGroup extends TestBase {
@@ -18,6 +19,16 @@ public class NewGroup extends TestBase {
     appManager.getNavigationManager().gotoGroups();
     List<GroupData> after = appManager.getGroupManager().getGroupList();
     Assert.assertEquals(after.size(), before.size()+1 );
+
+    int max = 0;
+    for (GroupData g : after) {
+      if (g.getGroupId() > max) {
+        max = g.getGroupId();
+      }
+    }
+    group.setGroupId(max);
+    before.add(group);
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
   }
 }
