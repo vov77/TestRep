@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -20,13 +21,21 @@ public class NewGroup extends TestBase {
     List<GroupData> after = appManager.getGroupManager().getGroupList();
     Assert.assertEquals(after.size(), before.size()+1 );
 
-    int max = 0;
-    for (GroupData g : after) {
+    /*int max1 = 0;
+    for (GroupData g : after)
       if (g.getGroupId() > max) {
         max = g.getGroupId();
+      }*/
+    /*Comparator<? super GroupData> byId = new Comparator<GroupData>() {
+      @Override
+      public int compare(GroupData o1, GroupData o2) {
+        return Integer.compare(o1.getGroupId(), o2.getGroupId());
       }
-    }
-    group.setGroupId(max);
+    };
+    int max1 = after.stream().max(byId).get().getGroupId();
+    group.setGroupId(max1);*/
+
+    group.setGroupId(after.stream().max((o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId())).get().getGroupId());
     before.add(group);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 

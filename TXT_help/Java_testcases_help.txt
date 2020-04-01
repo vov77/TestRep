@@ -160,4 +160,5 @@ ________________________________________________________________________________
     Generated toString() and equals Override in Group/Contact Data
 13. Compare HashSets for Group/Contact modifications, add id to evoid dupplicates String id = element.findElement(By.name("selected[]")).getAttribute("value");
 14. Update gr/cont creation tests with finding max id (change id from String to int)
+15. Replace finding max id with Comparator and lambda
 

@@ -18,13 +18,13 @@ public class NewContact extends TestBase {
     Assert.assertEquals(after.size(), before.size()+1 );
 
 
-    int max = 0;
+    /*int max = 0;
     for (ContactData c : after) {
       if (c.getContactId() > max) {
         max = c.getContactId();
       }
-    }
-    contact.setContactId(max);
+    }*/
+    contact.setContactId(after.stream().max((o1, o2) -> Integer.compare(o1.getContactId(), o2.getContactId())).get().getContactId());
 
 
     String new_Name = contact.getLastName() + " " + contact.getFirstName() + " " + contact.getHomeNumber();
