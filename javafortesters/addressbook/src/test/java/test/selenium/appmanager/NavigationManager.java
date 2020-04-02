@@ -17,10 +17,11 @@ public class NavigationManager extends BaseManager {
     }
     click(By.xpath("//a[contains(text(),'groups')]"));
   }
+
   public void gotoContacts() {
-    if (isElementPresent(By.id("maintable"))){
+    if (isElementPresent(By.xpath("//*[@id=\"content\"]/label/strong/text()"))){
       return;
     }
-    click(By.xpath("//a[contains(text(),'add new')]"));
+    click(By.xpath("//a[contains(text(),'home')]"));
   }
 }

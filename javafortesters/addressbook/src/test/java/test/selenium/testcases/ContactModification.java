@@ -3,10 +3,8 @@ package test.selenium.testcases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.selenium.model.ContactData;
-import test.selenium.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactModification extends TestBase {

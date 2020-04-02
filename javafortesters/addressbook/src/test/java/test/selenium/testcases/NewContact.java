@@ -11,8 +11,10 @@ import java.util.List;
 public class NewContact extends TestBase {
   @Test
     public void newContact() {
+
+    appManager.getNavigationManager().gotoContacts();
     List<ContactData> before = appManager.getContactManager().getContactList();
-    ContactData contact = new ContactData("Test9", "Test99", "Test999", "555555555", "test9");
+    ContactData contact = new ContactData("Test19", "Test99", "Test999", "555555555", "test9");
     appManager.getContactManager().createContact(contact, true);
     appManager.getNavigationManager().gotoContacts();
     List<ContactData> after = appManager.getContactManager().getContactList();

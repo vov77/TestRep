@@ -171,4 +171,5 @@ ________________________________________________________________________________
 For New group/contact tests we can remove calculation of max Id (after we added before/after.sort(byId)) and set in Group/ContactData constructor
 this.groupId = Integer.MAX_VALUE; - thus newly added group/contact will be always moved to the end of the list after sorting
 After sorting we don't need id - now we can remove them from equals/hash (generate then again)
+17. Changed @BeforeTest to @BeforeSuite and protected static final AppManager appManager (added static) to run all tests with one browser start
 

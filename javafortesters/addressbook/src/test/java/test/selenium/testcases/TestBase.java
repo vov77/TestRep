@@ -1,22 +1,22 @@
 package test.selenium.testcases;
 
 import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import test.selenium.appmanager.AppManager;
 
 public class TestBase {
 
-  protected final AppManager appManager = new AppManager(BrowserType.CHROME);
+  protected static final AppManager appManager = new AppManager(BrowserType.CHROME);
 
-  @BeforeTest
+  @BeforeSuite
 
   public void start() throws Exception {
     appManager.initial();
 
   }
 
-  @AfterTest
+  @AfterSuite
   public void stop(){
     appManager.finish();
   }
