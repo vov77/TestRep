@@ -24,13 +24,26 @@ public class ContactData {
   }
 
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(firstName, that.firstName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstName);
+  }
+
   public ContactData(String firstName, String lastName, String companyName, String homeNumber, String group) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.companyName = companyName;
     this.homeNumber = homeNumber;
     this.group = group;
-    contactId = 0;
+    contactId = Integer.MAX_VALUE;
   }
 
   public void setContactId(int contactId) {
@@ -60,22 +73,6 @@ public class ContactData {
 
   public String getGroup() {
     return group;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return contactId == that.contactId &&
-            Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName) &&
-            Objects.equals(homeNumber, that.homeNumber);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(contactId, firstName, lastName, homeNumber);
   }
 
   @Override

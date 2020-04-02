@@ -35,9 +35,12 @@ public class NewGroup extends TestBase {
     int max1 = after.stream().max(byId).get().getGroupId();
     group.setGroupId(max1);*/
 
-    group.setGroupId(after.stream().max((o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId())).get().getGroupId());
+    //group.setGroupId(after.stream().max((o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId())).get().getGroupId());
     before.add(group);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getGroupId);
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
 
   }
 }

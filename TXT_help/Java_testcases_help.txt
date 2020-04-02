@@ -156,9 +156,19 @@ ________________________________________________________________________________
     driver.findElements(By.name("selected[]")).get(index).click();
   }
 11. Collections formed - Added List<GroupData> getGroupList() / List<ContactData> getContactList() methods to get Lists of groups/contacts from WebElements
-12. Collections compearing - Added   before.remove(before.size() -1);  Assert.assertEquals(before, after); for group/contact delete tests
+12. Collections comparing - Added   before.remove(before.size() -1);  Assert.assertEquals(before, after); for group/contact delete tests
     Generated toString() and equals Override in Group/Contact Data
 13. Compare HashSets for Group/Contact modifications, add id to evoid dupplicates String id = element.findElement(By.name("selected[]")).getAttribute("value");
 14. Update gr/cont creation tests with finding max id (change id from String to int)
 15. Replace finding max id with Comparator and lambda
+ contact.setContactId(after.stream().max((o1, o2) -> Integer.compare(o1.getContactId(), o2.getContactId())).get().getContactId());
+16. Replace comparing HashSets with Lists sorting + compare Lists using Comparator
+  //Comparator<? super ContactData> byId = (o1, o2) -> Integer.compare(o1.getContactId(), o2.getContactId());
+    Comparator<? super ContactData> byId = Comparator.comparingInt(ContactData::getContactId);
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+For New group/contact tests we can remove calculation of max Id (after we added before/after.sort(byId)) and set in Group/ContactData constructor
+this.groupId = Integer.MAX_VALUE; - thus newly added group/contact will be always moved to the end of the list after sorting
+After sorting we don't need id - now we can remove them from equals/hash (generate then again)
 
