@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class NewGroup extends TestBase {
@@ -13,12 +12,12 @@ public class NewGroup extends TestBase {
   @Test
   public void createNewGroup(){
 
-    appManager.getNavigationManager().gotoGroups();
-    List<GroupData> before = appManager.getGroupManager().getGroupList();
+    app.goTo().groups();
+    List<GroupData> before = app.group().list();
     GroupData group = new GroupData("Test100", "Test110", "Test111");
-    appManager.getGroupManager().createGroup(group);
-    appManager.getNavigationManager().gotoGroups();
-    List<GroupData> after = appManager.getGroupManager().getGroupList();
+    app.group().create(group);
+    app.goTo().groups();
+    List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size()+1 );
 
     /*int max1 = 0;

@@ -9,7 +9,7 @@ public class NavigationManager extends BaseManager {
     super(driver);
   }
 
-  public void gotoGroups() {
+  public void groups() {
     if (isElementPresent(By.tagName("h1"))
       && driver.findElement(By.tagName("h1")).getText().equals("Groups")
             && isElementPresent(By.name("new"))) {
@@ -18,7 +18,7 @@ public class NavigationManager extends BaseManager {
     click(By.xpath("//a[contains(text(),'groups')]"));
   }
 
-  public void gotoContacts() {
+  public void contacts() {
     if (isElementPresent(By.xpath("//*[@id=\"content\"]/label/strong/text()"))){
       return;
     }

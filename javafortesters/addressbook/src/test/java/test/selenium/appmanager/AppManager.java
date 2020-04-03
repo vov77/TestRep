@@ -52,19 +52,19 @@ public class AppManager {
     driver = null;
   }
 
-  public GroupManager getGroupManager() {
+  public GroupManager group() {
     return groupManager;
   }
 
-  public NavigationManager getNavigationManager() {
+  public NavigationManager goTo() {
     return navigationManager;
   }
 
-  public SessionManager getSessionManager() {
+  public SessionManager session() {
     return sessionManager;
   }
 
-  public ContactManager getContactManager() {
+  public ContactManager contact() {
     return contactManager;
   }
 

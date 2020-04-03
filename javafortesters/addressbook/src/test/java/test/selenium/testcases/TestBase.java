@@ -7,22 +7,22 @@ import test.selenium.appmanager.AppManager;
 
 public class TestBase {
 
-  protected static final AppManager appManager = new AppManager(BrowserType.CHROME);
+  protected static final AppManager app = new AppManager(BrowserType.CHROME);
 
-  public static AppManager getAppManager() {
-    return appManager;
+  public static AppManager getApp() {
+    return app;
   }
 
   @BeforeSuite
 
   public void start() throws Exception {
-    appManager.initial();
+    app.initial();
 
   }
 
   @AfterSuite
   public void stop(){
-    appManager.finish();
+    app.finish();
   }
 
 

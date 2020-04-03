@@ -10,21 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertFalse;
+import static test.selenium.testcases.TestBase.getApp;
 
 public class ContactManager extends BaseManager{
   public ContactManager(WebDriver driver) {
     super(driver);
   }
 
-  public void startNewContact() {
+  public void startNew() {
     click(By.xpath("//a[contains(text(),'add new')]"));
   }
 
-  public void submitNewContact() {
+  public void submit() {
     click(By.xpath("//input[@name='submit']"));
   }
 
-  public void fillNewContactFields(ContactData contactData, boolean creation) {
+  public void fillNewFields(ContactData contactData, boolean creation) {
     type(By.xpath("//input[@name='firstname']"), contactData.getFirstName());
     type(By.xpath("//input[@name='lastname']"), contactData.getLastName());
     type(By.xpath("//input[@name='company']"), contactData.getCompanyName());
@@ -37,43 +38,40 @@ public class ContactManager extends BaseManager{
     }
   }
 
-  public void selectContact(int index) {
+  public void select(int index) {
     driver.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void submitToDeleteContact() {
+  public void submitToDelete() {
     click(By.xpath("//input[@value='Delete']"));
     driver.switchTo().alert().accept();
   }
 
-  public void initContactMod(int index) {
+  public void edit(int index) {
     driver.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
   }
 
-  public void updateContact() {
+  public void update() {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
-  public void createContact(ContactData contactData, boolean creation) {
-    startNewContact();
-    fillNewContactFields(contactData, creation);
-    submitNewContact();
+  public void create(ContactData contactData, boolean creation) {
+    startNew();
+    fillNewFields(contactData, creation);
+    submit();
   }
 
-  public void modifyContact(List<ContactData> before, ContactData contact) {
-    initContactMod(before.size() -1);
-    fillNewContactFields(contact, false);
-    updateContact();
+  public void modify(List<ContactData> before, ContactData contact) {
+    edit(before.size() -1);
+    fillNewFields(contact, false);
+    update();
   }
-
-  public boolean isThereContact() {
-    return isElementPresent(By.name("selected[]"));
+  public void delete(int index) {
+    select(index);
+    submitToDelete();
+    getApp().goTo().contacts();
   }
-  public int getContactCount() {
-    return driver.findElements(By.name("selected[]")).size();
-  }
-
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = driver.findElements(By.name("entry"));
     for(WebElement element: elements){
