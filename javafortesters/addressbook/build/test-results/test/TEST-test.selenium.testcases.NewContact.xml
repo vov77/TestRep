@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.NewContact" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-02T21:54:33" hostname="DESKTOP-ULH6INK" time="15.705">
-  <properties/>
-  <testcase name="newContact" classname="test.selenium.testcases.NewContact" time="15.705"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

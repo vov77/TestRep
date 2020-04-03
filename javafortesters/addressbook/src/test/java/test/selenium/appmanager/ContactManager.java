@@ -60,6 +60,12 @@ public class ContactManager extends BaseManager{
     submitNewContact();
   }
 
+  public void modifyContact(List<ContactData> before, ContactData contact) {
+    initContactMod(before.size() -1);
+    fillNewContactFields(contact, false);
+    updateContact();
+  }
+
   public boolean isThereContact() {
     return isElementPresent(By.name("selected[]"));
   }

@@ -4,13 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import test.selenium.model.GroupData;
+import test.selenium.testcases.TestBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static test.selenium.testcases.TestBase.*;
+
 public class GroupManager extends BaseManager {
 
-  public GroupManager(WebDriver driver) {
+  GroupManager(WebDriver driver) {
     super(driver);
   }
 
@@ -36,11 +39,11 @@ public class GroupManager extends BaseManager {
     click(By.xpath("(//input[@name='delete'])[2]"));
   }
 
-  public void initGroupMod() {
+  private void initGroupMod() {
     click(By.name("edit"));
   }
 
-  public void updateGroup() {
+  private void updateGroup() {
     click(By.name("update"));
   }
 
@@ -48,6 +51,14 @@ public class GroupManager extends BaseManager {
     startNewGroup();
     fillNewGroupFields(groupData);
     submitNewGroup();
+  }
+
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupMod();
+    fillNewGroupFields(group);
+    updateGroup();
+    getAppManager().getNavigationManager().gotoGroups();
   }
 
   public boolean isThereGroup() {

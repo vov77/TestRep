@@ -9,6 +9,10 @@ public class TestBase {
 
   protected static final AppManager appManager = new AppManager(BrowserType.CHROME);
 
+  public static AppManager getAppManager() {
+    return appManager;
+  }
+
   @BeforeSuite
 
   public void start() throws Exception {
