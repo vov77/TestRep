@@ -5,8 +5,9 @@ import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
-public class GroupModificationTests extends TestBase {
+public class ModifyGroup extends TestBase {
 
 
   @BeforeMethod
@@ -18,19 +19,19 @@ public class GroupModificationTests extends TestBase {
     }
   }
   @Test
-  public void testGroupModification(){
-    List<GroupData> before = app.group().list();
-    int index = before.size()-1;
-    GroupData group = new GroupData(before.get(index).getGroupId(),"test9", "test99", null);
-    app.group().modify(index, group);
-    List<GroupData> after = app.group().list();
-    Assert.assertEquals(before.size(), after.size());
-    before.remove(index);
+  public void groupMod(){
+    Set<GroupData> before = app.group().set();
+    GroupData modifiedGroup = before.iterator().next();
+    GroupData group = new GroupData(modifiedGroup.getGroupId(),"test9", "test99", null);
+    app.group().modify(group);
+    Set<GroupData> after = app.group().set();
+
+    before.remove(modifiedGroup);
     before.add(group);
     //Comparator<? super GroupData> byId = (o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId());
-    Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getGroupId);
-    before.sort(byId);
-    after.sort(byId);
+    //Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getGroupId);
+    //before.sort(byId);
+    //after.sort(byId);
     Assert.assertEquals(before, after);
 
   }

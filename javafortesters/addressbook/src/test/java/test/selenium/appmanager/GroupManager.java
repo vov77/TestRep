@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import test.selenium.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static test.selenium.testcases.TestBase.*;
 
@@ -19,47 +21,41 @@ public class GroupManager extends BaseManager {
   public void startNew() {
     click(By.xpath("//input[@name='new']"));
   }
-
   public void submit() {
     click(By.xpath("//input[@name='submit']"));
   }
-
   public void fillNewFields(GroupData groupData) {
     type(By.xpath("//input[@name='group_name']"), groupData.getGroupName());
     type(By.xpath("//textarea[@name='group_header']"), groupData.getGroupHeader());
     type(By.xpath("//textarea[@name='group_footer']"), groupData.getGroupFooter());
   }
-
-  public void select(int index) {
-    driver.findElements(By.name("selected[]")).get(index).click();
+  public void selectById(int id) {
+    driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
-
   public void submitToDelete() {
     click(By.xpath("(//input[@name='delete'])[2]"));
   }
-
   private void edit() {
     click(By.name("edit"));
   }
-
   private void update() {
     click(By.name("update"));
   }
-
   public void create(GroupData groupData) {
     startNew();
     fillNewFields(groupData);
     submit();
   }
-  public void modify(int index, GroupData group) {
-    select(index);
+  public void modify(GroupData group) {
+    selectById(group.getGroupId());
     edit();
     fillNewFields(group);
     update();
     getApp().goTo().groups();
   }
-  public void delete(int index) {
-    select(index);
+
+  public void delete(GroupData group) {
+    selectById(group.getGroupId());
     submitToDelete();
     getApp().goTo().groups();
   }
@@ -74,4 +70,16 @@ public class GroupManager extends BaseManager {
     }
     return groups;
   }
+  public Set<GroupData> set() {
+    Set<GroupData> groups = new HashSet<>();
+    List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
+    for(WebElement element: elements){
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      GroupData group = new GroupData(id, name, null, null);
+      groups.add(group);
+    }
+    return groups;
+  }
+
 }

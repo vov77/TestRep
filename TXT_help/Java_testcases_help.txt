@@ -173,3 +173,4 @@ this.groupId = Integer.MAX_VALUE; - thus newly added group/contact will be alway
 After sorting we don't need id - now we can remove them from equals/hash (generate then again)
 17. Changed @BeforeTest to @BeforeSuite and protected static final AppManager appManager (added static) to run all tests with one browser start
 18. Moved modify and delete tests preconditions to @BeforeMethod
+19. Replace List check with Set check - when we use id we don't need to sort or find max id.

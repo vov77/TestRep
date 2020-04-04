@@ -3,27 +3,12 @@ package test.selenium.model;
 import java.util.Objects;
 
 public class GroupData {
-  public void setGroupId(int groupId) {
-    this.groupId = groupId;
-  }
 
   private int groupId;
   private final String groupName;
   private final String groupHeader;
   private final String groupFooter;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    GroupData groupData = (GroupData) o;
-    return Objects.equals(groupName, groupData.groupName);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(groupName);
-  }
 
   public GroupData(String groupName, String groupHeader, String groupFooter) {
     this.groupId = Integer.MAX_VALUE;
@@ -39,12 +24,8 @@ public class GroupData {
     this.groupFooter = groupFooter;
   }
 
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "groupId='" + groupId + '\'' +
-            ", groupName='" + groupName + '\'' +
-            '}';
+  public void setGroupId(int groupId) {
+    this.groupId = groupId;
   }
 
   public int getGroupId() {
@@ -56,10 +37,30 @@ public class GroupData {
   public String getGroupHeader() {
     return groupHeader;
   }
-
   public String getGroupFooter() {
     return groupFooter;
   }
 
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GroupData groupData = (GroupData) o;
+    return groupId == groupData.groupId &&
+            Objects.equals(groupName, groupData.groupName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(groupId, groupName);
+  }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "groupId='" + groupId + '\'' +
+            ", groupName='" + groupName + '\'' +
+            '}';
+  }
 }

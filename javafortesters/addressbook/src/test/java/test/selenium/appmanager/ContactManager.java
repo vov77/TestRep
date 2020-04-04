@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import test.selenium.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.testng.Assert.assertFalse;
 import static test.selenium.testcases.TestBase.getApp;
@@ -38,8 +40,8 @@ public class ContactManager extends BaseManager{
     }
   }
 
-  public void select(int index) {
-    driver.findElements(By.name("selected[]")).get(index).click();
+  public void selectById(int id) {
+    driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void submitToDelete() {
@@ -47,8 +49,8 @@ public class ContactManager extends BaseManager{
     driver.switchTo().alert().accept();
   }
 
-  public void edit(int index) {
-    driver.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+  public void edit(int id) {
+    driver.findElement(By.cssSelector("a[href='" + "edit.php?id=" + id + "']")).click();
   }
 
   public void update() {
@@ -61,13 +63,15 @@ public class ContactManager extends BaseManager{
     submit();
   }
 
-  public void modify(List<ContactData> before, ContactData contact) {
-    edit(before.size() -1);
+  public void modify(ContactData contact) {
+    selectById(contact.getContactId());
+    edit(contact.getContactId());
     fillNewFields(contact, false);
     update();
   }
-  public void delete(int index) {
-    select(index);
+
+  public void delete(ContactData contact) {
+    selectById(contact.getContactId());
     submitToDelete();
     getApp().goTo().contacts();
   }
@@ -79,8 +83,19 @@ public class ContactManager extends BaseManager{
       int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
       ContactData contact = new ContactData(id, name, null, null, null, null);
       contacts.add(contact);
-      //System.out.println(name);
     }
     return contacts;
   }
+  public Set<ContactData> set() {
+    Set<ContactData> contacts = new HashSet<>();
+    List<WebElement> elements = driver.findElements(By.name("entry"));
+    for(WebElement element: elements){
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
+      ContactData contact = new ContactData(id, name, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+
 }

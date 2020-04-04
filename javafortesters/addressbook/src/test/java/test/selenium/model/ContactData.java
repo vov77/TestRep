@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class ContactData {
 
-
-
   private int contactId;
   private final String firstName;
   private final String lastName;
@@ -23,8 +21,6 @@ public class ContactData {
     this.group = group;
   }
 
-
-
   public ContactData(String firstName, String lastName, String companyName, String homeNumber, String group) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -38,27 +34,21 @@ public class ContactData {
     this.contactId = contactId;
   }
 
-
   public int getContactId() {
     return contactId;
   }
-
   public String getFirstName() {
     return firstName;
   }
-
   public String getLastName() {
     return lastName;
   }
-
   public String getCompanyName() {
     return companyName;
   }
-
   public String getHomeNumber() {
     return homeNumber;
   }
-
   public String getGroup() {
     return group;
   }
@@ -78,12 +68,14 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(firstName, that.firstName);
+    return contactId == that.contactId &&
+            Objects.equals(firstName, that.firstName) &&
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(homeNumber, that.homeNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName);
+    return Objects.hash(contactId, firstName, lastName, homeNumber);
   }
-
 }
