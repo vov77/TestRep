@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import test.selenium.model.GroupData;
+import test.selenium.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -70,8 +71,8 @@ public class GroupManager extends BaseManager {
     }
     return groups;
   }
-  public Set<GroupData> set() {
-    Set<GroupData> groups = new HashSet<>();
+  public Groups set() {
+    Groups groups = new Groups();
     List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
     for(WebElement element: elements){
       String name = element.getText();

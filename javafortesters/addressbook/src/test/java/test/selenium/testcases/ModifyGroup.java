@@ -1,11 +1,18 @@
 package test.selenium.testcases;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
+import test.selenium.model.Groups;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
 public class ModifyGroup extends TestBase {
 
@@ -20,19 +27,20 @@ public class ModifyGroup extends TestBase {
   }
   @Test
   public void groupMod(){
-    Set<GroupData> before = app.group().set();
+    Groups before = app.group().set();
     GroupData modifiedGroup = before.iterator().next();
     GroupData group = new GroupData(modifiedGroup.getGroupId(),"test9", "test99", null);
     app.group().modify(group);
-    Set<GroupData> after = app.group().set();
+    Groups after = app.group().set();
 
-    before.remove(modifiedGroup);
-    before.add(group);
+    //before.remove(modifiedGroup);
+    //before.add(group);
     //Comparator<? super GroupData> byId = (o1, o2) -> Integer.compare(o1.getGroupId(), o2.getGroupId());
     //Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getGroupId);
     //before.sort(byId);
     //after.sort(byId);
-    Assert.assertEquals(before, after);
+    //Assert.assertEquals(before, after);
+    assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
 
   }
 

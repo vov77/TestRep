@@ -174,3 +174,5 @@ After sorting we don't need id - now we can remove them from equals/hash (genera
 17. Changed @BeforeTest to @BeforeSuite and protected static final AppManager appManager (added static) to run all tests with one browser start
 18. Moved modify and delete tests preconditions to @BeforeMethod
 19. Replace List check with Set check - when we use id we don't need to sort or find max id.
+20. Refactor asserts with Matchers (Hamcrest lib), implemet withAdded/without methods for Set<GroupData>/<ContactData> using Decorator pattern implemented 
+by ForwardingSet lib by Guava

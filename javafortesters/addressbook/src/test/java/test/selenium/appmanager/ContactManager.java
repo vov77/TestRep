@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import test.selenium.model.ContactData;
+import test.selenium.model.Contacts;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -86,8 +87,8 @@ public class ContactManager extends BaseManager{
     }
     return contacts;
   }
-  public Set<ContactData> set() {
-    Set<ContactData> contacts = new HashSet<>();
+  public Contacts set() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = driver.findElements(By.name("entry"));
     for(WebElement element: elements){
       String name = element.getText();

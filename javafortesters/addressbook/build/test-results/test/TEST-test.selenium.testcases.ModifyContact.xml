@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.ModifyContact" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-04T21:40:58" hostname="DESKTOP-ULH6INK" time="15.142">
+<testsuite name="test.selenium.testcases.ModifyContact" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-08T18:56:11" hostname="DESKTOP-ULH6INK" time="15.334">
   <properties/>
-  <testcase name="contactMod" classname="test.selenium.testcases.ModifyContact" time="15.142"/>
+  <testcase name="contactMod" classname="test.selenium.testcases.ModifyContact" time="15.334"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
