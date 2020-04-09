@@ -176,3 +176,4 @@ After sorting we don't need id - now we can remove them from equals/hash (genera
 19. Replace List check with Set check - when we use id we don't need to sort or find max id.
 20. Refactor asserts with Matchers (Hamcrest lib), implemet withAdded/without methods for Set<GroupData>/<ContactData> using Decorator pattern implemented 
 by ForwardingSet lib by Guava
+21. Added checking cache for groups and contacts in Group/Contact Manager

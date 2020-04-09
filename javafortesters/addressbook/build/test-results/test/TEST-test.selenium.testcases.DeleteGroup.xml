@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.DeleteGroup" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-08T18:55:59" hostname="DESKTOP-ULH6INK" time="0.775">
-  <properties/>
-  <testcase name="deleteGroup" classname="test.selenium.testcases.DeleteGroup" time="0.775"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

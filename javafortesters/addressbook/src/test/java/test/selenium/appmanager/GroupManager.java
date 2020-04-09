@@ -52,12 +52,14 @@ public class GroupManager extends BaseManager {
     edit();
     fillNewFields(group);
     update();
+    groupCache = null;
     getApp().goTo().groups();
   }
 
   public void delete(GroupData group) {
     selectById(group.getGroupId());
     submitToDelete();
+    groupCache = null;
     getApp().goTo().groups();
   }
   public List<GroupData> list() {
@@ -71,16 +73,22 @@ public class GroupManager extends BaseManager {
     }
     return groups;
   }
+
+  private Groups groupCache = null;   //кэшируем сет групп
+
   public Groups set() {
-    Groups groups = new Groups();
+    if (groupCache != null) {
+      return new Groups(groupCache); // возвращаем копию groupCache
+    }
+    groupCache = new Groups();
     List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
     for(WebElement element: elements){
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       GroupData group = new GroupData(id, name, null, null);
-      groups.add(group);
+      groupCache.add(group);
     }
-    return groups;
+    return new Groups(groupCache);
   }
 
 }

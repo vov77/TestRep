@@ -69,11 +69,14 @@ public class ContactManager extends BaseManager{
     edit(contact.getContactId());
     fillNewFields(contact, false);
     update();
+    contactCache = null;
+    getApp().goTo().contacts();
   }
 
   public void delete(ContactData contact) {
     selectById(contact.getContactId());
     submitToDelete();
+    contactCache = null;
     getApp().goTo().contacts();
   }
   public List<ContactData> list() {
@@ -87,16 +90,21 @@ public class ContactManager extends BaseManager{
     }
     return contacts;
   }
+  private Contacts contactCache = null;
+
   public Contacts set() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = driver.findElements(By.name("entry"));
     for(WebElement element: elements){
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
       ContactData contact = new ContactData(id, name, null, null, null, null);
-      contacts.add(contact);
+      contactCache.add(contact);
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 
 }
