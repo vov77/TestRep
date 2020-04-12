@@ -50,7 +50,9 @@ public class ContactData {
     return homeNumber;
   }
   public String getGroup() {
-    return group;
+    if (group != null)
+      return group;
+    else return "[none]";
   }
 
   @Override

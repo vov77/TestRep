@@ -46,6 +46,7 @@ public class GroupManager extends BaseManager {
     startNew();
     fillNewFields(groupData);
     submit();
+    groupCache = null;
   }
   public void modify(GroupData group) {
     selectById(group.getGroupId());
@@ -91,4 +92,7 @@ public class GroupManager extends BaseManager {
     return new Groups(groupCache);
   }
 
+  public int count() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
 }

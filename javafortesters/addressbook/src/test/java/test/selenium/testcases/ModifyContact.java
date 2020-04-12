@@ -28,6 +28,7 @@ public class ModifyContact extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData(modifiedContact.getContactId(),"Test123", "Test988", "Test898", "7777788", null);
     app.contact().modify(contact);
+    assertThat(app.contact().count(), equalTo(before.size() ));
     Contacts after = app.contact().set();
 
     String new_Name = contact.getLastName() + " " + contact.getFirstName() + " " + contact.getHomeNumber();

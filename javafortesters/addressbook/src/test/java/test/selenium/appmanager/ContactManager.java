@@ -62,6 +62,7 @@ public class ContactManager extends BaseManager{
     startNew();
     fillNewFields(contactData, creation);
     submit();
+    contactCache = null;
   }
 
   public void modify(ContactData contact) {
@@ -106,5 +107,11 @@ public class ContactManager extends BaseManager{
     }
     return new Contacts(contactCache);
   }
+  public int count() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
 
+  public ContactData infoFromEdit(ContactData contact) {
+
+  }
 }

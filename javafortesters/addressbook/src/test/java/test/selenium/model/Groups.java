@@ -17,7 +17,7 @@ import java.util.Set;
 public class Groups extends ForwardingSet <GroupData> {
 
   //объявляем объект, которому делегируются стандартные и доп методы - decorated object - делегат
-  final Set<GroupData> delegate;
+  private Set<GroupData> delegate;
 
   // имплементируем и переопределяем метод delegate() - возвращает объект delegate
   //override to return the decorated object. Each of the other methods delegate directly to the delegate:
@@ -30,7 +30,7 @@ public class Groups extends ForwardingSet <GroupData> {
   public Groups(Groups groups) {
     // берем множество из существующего объекта, переданного в параметре, строим новое множество с теми же элементами
     //присваиваем новое множество в качестве атрибута в новый объект
-    delegate = new HashSet<GroupData>(groups.delegate);
+    this.delegate = new HashSet<GroupData>(groups.delegate);
   }
 
   public Groups() {
