@@ -18,10 +18,11 @@ public class NewContact extends TestBase {
     app.goTo().contacts();
     assertThat(app.contact().count(), equalTo(before.size()+1 ));
     Contacts after = app.contact().set();
-    String new_Name = contact.getLastName() + " " + contact.getFirstName() + " " + contact.getHomeNumber();
     //before.add(new ContactData((after.stream().mapToInt(ContactData::getContactId).max().getAsInt()), new_Name, null, null, null, null));
     // assertEquals(before, after);
-    assertThat(after, equalTo(before.withAdded(new ContactData((after.stream().mapToInt(ContactData::getContactId).max().getAsInt()), new_Name, null, null, null, null))));
+    assertThat(after, equalTo(before.withAdded(new ContactData((after.stream().
+            mapToInt(ContactData::getId).max().getAsInt()),
+            contact.getFirstName(), contact.getLastName(), null, contact.getHomeNumber(), contact.getMobileNumber(), contact.getWorkNumber()))));
   }
 
   @Test
