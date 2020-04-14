@@ -21,7 +21,7 @@ public class ModifyGroup extends TestBase {
   public void preconditions() {
     app.goTo().groups();
     if (app.group().list().size() == 0){
-      app.group().create(new GroupData("Test100", "Test110", "Test111"));
+      app.group().create(new GroupData().withName("Test100").withFooter("Test110").withHeader("Test111"));
       app.goTo().groups();
     }
   }
@@ -29,7 +29,7 @@ public class ModifyGroup extends TestBase {
   public void groupMod(){
     Groups before = app.group().set();
     GroupData modifiedGroup = before.iterator().next();
-    GroupData group = new GroupData(modifiedGroup.getGroupId(),"test9", "test99", null);
+    GroupData group = new GroupData().withId(modifiedGroup.getGroupId()).withName("test9").withHeader("test99");
     app.group().modify(group);
     assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.group().set();

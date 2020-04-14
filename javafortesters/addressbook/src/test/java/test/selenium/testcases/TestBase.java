@@ -14,7 +14,6 @@ public class TestBase {
   }
 
   @BeforeSuite
-
   public void start() throws Exception {
     app.initial();
 

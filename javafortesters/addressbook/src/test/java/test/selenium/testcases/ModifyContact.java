@@ -14,16 +14,17 @@ public class ModifyContact extends TestBase {
   public void preconditions() {
     app.goTo().contacts();
     if (app.contact().list().size() == 0){
-      app.contact().create(new ContactData("Test9", "Test99", "Test999",
-              "555555555", "test9"), true);
+      app.contact().create(new ContactData().withFirstName("Test19").withLastName("Test99")
+              .withCompanyName("Test999"), true);
     }
   }
   @Test
   public void contactMod(){
     Contacts before = app.contact().set();
     ContactData modifiedContact = before.iterator().next();
-    ContactData contact = new ContactData(modifiedContact.getId(),"Test123", "Test988", "Test898",
-            "7777788", null);
+    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName("Test123")
+            .withLastName("Test988").withCompanyName("Test898");
+
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size() ));
     Contacts after = app.contact().set();
@@ -34,8 +35,9 @@ public class ModifyContact extends TestBase {
     //before.sort(byId);
     //after.sort(byId);
     //Assert.assertEquals(before, after);
-    assertThat(after, equalTo(before.without(modifiedContact).withAdded(new ContactData(contact.getId(),
-            contact.getFirstName(), contact.getLastName(), contact.getCompanyName(), contact.getHomeNumber(), contact.getGroup()))));
+    assertThat(after, equalTo(before.without(modifiedContact).withAdded(new ContactData()
+            .withId(contact.getId()).withFirstName(contact.getFirstName()).withLastName(contact.getLastName())
+            .withCompanyName(contact.getCompanyName()).withHomeNumber(contact.getHomeNumber()))));
 
   }
 

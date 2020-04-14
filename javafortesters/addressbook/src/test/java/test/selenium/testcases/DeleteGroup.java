@@ -21,7 +21,7 @@ public class DeleteGroup extends TestBase {
   public void preconditions() {
     app.goTo().groups();
     if (app.group().list().size() == 0){
-      app.group().create(new GroupData("Test100", "Test110", "Test111"));
+      app.group().create(new GroupData().withName("Test100").withFooter("Test110").withHeader("Test111"));
       app.goTo().groups();
     }
   }
