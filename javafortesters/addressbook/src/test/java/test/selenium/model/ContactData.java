@@ -1,5 +1,6 @@
 package test.selenium.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -19,6 +20,7 @@ public class ContactData {
   private String email2 = "";
   private String email3 = "";
   private String infoPageText = "";
+  private File photo;
 
   public int getId() {
     return id;
@@ -67,7 +69,9 @@ public class ContactData {
   public String getInfoPageText() {
     return infoPageText;
   }
-
+  public File getPhoto() {
+    return photo;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -127,6 +131,10 @@ public class ContactData {
   }
   public ContactData withInfoPageText(String infoPageText) {
     this.infoPageText = infoPageText;
+    return this;
+  }
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
     return this;
   }
 

@@ -70,6 +70,7 @@ public class ContactManager extends BaseManager{
     type(By.name("home"), contactData.getHomeNumber());
     type(By.name("mobile"), contactData.getMobileNumber());
     type(By.name("work"), contactData.getWorkNumber());
+    attach(By.name("photo"), contactData.getPhoto()); //*[@id="content"]/form[1]/input[7]
     //select group dropdown
     if (creation) {
       new Select((driver.findElement(By.name("new_group")))).selectByVisibleText(contactData.getGroup());

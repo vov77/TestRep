@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import test.selenium.model.ContactData;
 import test.selenium.model.Contacts;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -13,10 +15,9 @@ public class NewContact extends TestBase {
     public void newContact() {
     app.goTo().contacts();
     Contacts before = app.contact().set();
+    File photo = new File("src/test/resources/s.jpg");
     ContactData contact = new ContactData().withFirstName("Test19").withLastName("Test99")
-            .withCompanyName("Test999").withGroup("test9");
-
-
+            .withCompanyName("Test999").withGroup("test9").withPhoto(photo);
     app.contact().create(contact, true);
     app.goTo().contacts();
     assertThat(app.contact().count(), equalTo(before.size()+1 ));
