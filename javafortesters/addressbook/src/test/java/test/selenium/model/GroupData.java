@@ -12,13 +12,13 @@ public class GroupData {
   public int getGroupId() {
     return groupId;
   }
-  public String getGroupName() {
+  public String getName() {
     return groupName;
   }
-  public String getGroupHeader() {
+  public String getHeader() {
     return groupHeader;
   }
-  public String getGroupFooter() {
+  public String getFooter() {
     return groupFooter;
   }
 

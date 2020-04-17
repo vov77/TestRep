@@ -7,9 +7,7 @@ import test.selenium.model.GroupData;
 import test.selenium.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static test.selenium.testcases.TestBase.*;
 
@@ -26,9 +24,9 @@ public class GroupManager extends BaseManager {
     click(By.xpath("//input[@name='submit']"));
   }
   public void fillNewFields(GroupData groupData) {
-    type(By.xpath("//input[@name='group_name']"), groupData.getGroupName());
-    type(By.xpath("//textarea[@name='group_header']"), groupData.getGroupHeader());
-    type(By.xpath("//textarea[@name='group_footer']"), groupData.getGroupFooter());
+    type(By.xpath("//input[@name='group_name']"), groupData.getName());
+    type(By.xpath("//textarea[@name='group_header']"), groupData.getHeader());
+    type(By.xpath("//textarea[@name='group_footer']"), groupData.getFooter());
   }
   public void selectById(int id) {
     driver.findElement(By.cssSelector("input[value='" + id + "']")).click();

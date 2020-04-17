@@ -147,6 +147,8 @@ if (isElementPresent(By.name("new_group"))) {
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group"))); - !!! isElementPresent always returns true, see code for workaround
     }
+
+REFACTOR
 ______________________________________________________________________________________________________________________________________________________
 7. Page download speed optimization (speed up test execution) in NavigationManager (if page download speed is low):
 8. Add if/else for test preconditions (e.g. for Group/Contact delete ot modification to check if there is a Group/Contact to delete/modify)
@@ -177,3 +179,19 @@ After sorting we don't need id - now we can remove them from equals/hash (genera
 20. Refactor asserts with Matchers (Hamcrest lib), implemet withAdded/without methods for Set<GroupData>/<ContactData> using Decorator pattern implemented 
 by ForwardingSet lib by Guava
 21. Added checking cache for groups and contacts in Group/Contact Manager
+22. Added cheching hash for huge amount pf Groups/Contacts
+23. Strings split and merge to simplify Contacts attributes verification as one line text
+____________________________________________________________________________________________________________________________________________________
+
+FILES
+
+24. Steps to add photo  File photo = new File("src/test/resources/s.png"); in ContactManager - type(By.name("photo"), contactData.getPhoto().getAbsolutePath());
+Change type method to new attach 
+  public void attach (By locator, File file) {
+    if(file != null) {
+        driver.findElement(locator).sendKeys(file.getAbsolutePath());
+    }
+  }
+
+25. Create data generators - make sure Config uses correct absolute !! address (change Working directory)
+
