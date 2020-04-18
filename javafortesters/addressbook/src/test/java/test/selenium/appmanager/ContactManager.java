@@ -67,6 +67,7 @@ public class ContactManager extends BaseManager{
     type(By.xpath("//input[@name='firstname']"), contactData.getFirstName());
     type(By.xpath("//input[@name='lastname']"), contactData.getLastName());
     type(By.xpath("//input[@name='company']"), contactData.getCompanyName());
+    type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomeNumber());
     type(By.name("mobile"), contactData.getMobileNumber());
     type(By.name("work"), contactData.getWorkNumber());

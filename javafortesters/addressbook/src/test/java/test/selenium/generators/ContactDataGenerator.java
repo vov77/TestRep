@@ -42,20 +42,21 @@ public class ContactDataGenerator {
   }
 
   private List<ContactData> generateContacts(int count) {
-    List<ContactData> groups = new ArrayList<>();
+    List<ContactData> contacts = new ArrayList<>();
     for (int i = 0; i < count; i++) {
-      groups.add(new ContactData().withFirstName(String.format("First Name %s", i))
+      contacts.add(new ContactData().withFirstName(String.format("First Name %s", i))
               .withLastName(String.format("Last Name %s", i)).withAddress(String.format("address %s", i))
-      .withMobileNumber(String.format("number 123456%s", i)));
+      .withMobileNumber(String.format("123456%s", i)).withPhoto(new File("src/test/resources/s.jpg")));
+
     }
-    return groups;
+    return contacts;
   }
 
   private void save(List<ContactData> contacts, File file) throws IOException {
     Writer writer = new FileWriter(file);
     for (ContactData contact : contacts) {
-      writer.write(String.format("%s;%s;%s;%s\n", contact.getFirstName(), contact.getLastName(),
-              contact.getAddress(), contact.getMobileNumber()));
+      writer.write(String.format("%s;%s;%s;%s;%s\n", contact.getFirstName(), contact.getLastName(),
+              contact.getAddress(), contact.getMobileNumber(), contact.getPhoto()));
     }
     writer.close();
   }

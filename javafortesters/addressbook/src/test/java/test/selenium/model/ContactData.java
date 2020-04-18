@@ -35,9 +35,10 @@ public class ContactData {
     return companyName;
   }
   public String getGroup() {
-    if (group != null)
-      return group;
-    else return "[none]";
+    if (group.equals(""))
+      return "[none]";
+    else return group;
+        //else return "[none]";
   }
   public String getHomeNumber() {
     return homeNumber;

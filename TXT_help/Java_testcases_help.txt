@@ -194,4 +194,6 @@ Change type method to new attach
   }
 
 25. Create data generators - make sure Config uses correct absolute !! address (change Working directory)
+26. Install jcommander lib, edit config with new parameters
+27. Implement DataProvider in tests to separate test data from test execution. 
 
