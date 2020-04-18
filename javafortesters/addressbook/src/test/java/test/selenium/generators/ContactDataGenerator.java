@@ -1,5 +1,8 @@
 package test.selenium.generators;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 import test.selenium.model.ContactData;
 import java.io.File;
 import java.io.FileWriter;
@@ -10,17 +13,35 @@ import java.util.List;
 
 public class ContactDataGenerator {
 
-  public static void main(String[] args) throws IOException {
-    //data generated
-    int count = Integer.parseInt(args[0]);
-    File file = new File(args[1]);
+  //Jcommander parameters (generated data)
+  @Parameter (names = "-c", description = "Contact count")
+  public int count;
+  @Parameter (names = "-f", description = "Target file")
+  public String file;
 
-    // store data in file
-    List<ContactData> contacts = generateContacts(count);
-    save(contacts, file);
+
+  public static void main(String[] args) throws IOException {
+    ContactDataGenerator generator = new ContactDataGenerator();
+    JCommander commander = new JCommander(generator);
+    try {
+      commander.parse(args);
+    }
+    catch (ParameterException e){
+      commander.usage();
+      return;
+    }
+    generator.run();
+
+
   }
 
-  private static List<ContactData> generateContacts(int count) {
+  private void run() throws IOException {
+    // store data in file
+    List<ContactData> contacts = generateContacts(count);
+    save(contacts, new File(file));
+  }
+
+  private List<ContactData> generateContacts(int count) {
     List<ContactData> groups = new ArrayList<>();
     for (int i = 0; i < count; i++) {
       groups.add(new ContactData().withFirstName(String.format("First Name %s", i))
@@ -30,7 +51,7 @@ public class ContactDataGenerator {
     return groups;
   }
 
-  private static void save(List<ContactData> contacts, File file) throws IOException {
+  private void save(List<ContactData> contacts, File file) throws IOException {
     Writer writer = new FileWriter(file);
     for (ContactData contact : contacts) {
       writer.write(String.format("%s;%s;%s;%s\n", contact.getFirstName(), contact.getLastName(),
