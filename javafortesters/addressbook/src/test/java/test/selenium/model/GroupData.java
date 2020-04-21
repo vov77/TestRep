@@ -1,12 +1,25 @@
 package test.selenium.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.Expose;
+
 import java.util.Objects;
 
 public class GroupData {
-
+  //ignore fields using FasterXML Jackson
+  @JsonIgnore
   private int groupId = Integer.MAX_VALUE;
+  //mark fields to be included in json using Gson
+  @Expose
+  //rename fields to correctly map with xml using FasterXML Jackson
+  @JsonProperty("name")
   private String groupName;
+  @Expose
+  @JsonProperty("header")
   private String groupHeader;
+  @Expose
+  @JsonProperty("footer")
   private String groupFooter;
 
   public int getGroupId() {

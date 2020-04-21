@@ -1,0 +1,38 @@
+<ArrayList>
+  <item>
+    <id>2147483647</id>
+    <firstName>First Name 0</firstName>
+    <lastName>Last Name 0</lastName>
+    <group>[none]</group>
+    <companyName></companyName>
+    <homeNumber></homeNumber>
+    <mobileNumber>1234560</mobileNumber>
+    <workNumber></workNumber>
+    <allPhones></allPhones>
+    <address>address 0</address>
+    <email1></email1>
+    <email2></email2>
+    <email3></email3>
+    <infoPageText></infoPageText>
+    <photo>D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg</photo>
+    <email></email>
+  </item>
+  <item>
+    <id>2147483647</id>
+    <firstName>First Name 1</firstName>
+    <lastName>Last Name 1</lastName>
+    <group>[none]</group>
+    <companyName></companyName>
+    <homeNumber></homeNumber>
+    <mobileNumber>1234561</mobileNumber>
+    <workNumber></workNumber>
+    <allPhones></allPhones>
+    <address>address 1</address>
+    <email1></email1>
+    <email2></email2>
+    <email3></email3>
+    <infoPageText></infoPageText>
+    <photo>D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg</photo>
+    <email></email>
+  </item>
+</ArrayList>

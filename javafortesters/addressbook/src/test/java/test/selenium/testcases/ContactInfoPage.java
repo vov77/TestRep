@@ -32,7 +32,7 @@ public class ContactInfoPage extends TestBase{
 
   private String mergeAllFields(ContactData contact) {
     return Arrays.asList(contact.getFirstName(), contact.getLastName(), contact.getAddress(), contact.getAllPhones(),
-             contact.getEmail(), contact.getInfoPageText())
+             contact.getEmails(), contact.getInfoPageText())
             .stream().filter(s -> ! s.equals(""))
             .map(ContactInfoPage::cleaned)
             .collect(Collectors.joining(""));

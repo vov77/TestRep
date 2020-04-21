@@ -71,6 +71,7 @@ public class ContactManager extends BaseManager{
     type(By.name("home"), contactData.getHomeNumber());
     type(By.name("mobile"), contactData.getMobileNumber());
     type(By.name("work"), contactData.getWorkNumber());
+    type(By.name("email"), contactData.getEmail1());
     attach(By.name("photo"), contactData.getPhoto()); //*[@id="content"]/form[1]/input[7]
     //select group dropdown
     if (creation) {

@@ -1,0 +1,17 @@
+[ {
+  "id" : 2147483647,
+  "firstName" : "First Name 0",
+  "lastName" : "Last Name 0",
+  "mobileNumber" : "1234560",
+  "address" : "address 0",
+  "email1" : "0@mail.ru",
+  "photo" : "D:\\GitHub\\TestRep\\javafortesters\\addressbook\\src\\test\\resources\\s.jpg"
+}, {
+  "id" : 2147483647,
+  "firstName" : "First Name 1",
+  "lastName" : "Last Name 1",
+  "mobileNumber" : "1234561",
+  "address" : "address 1",
+  "email1" : "1@mail.ru",
+  "photo" : "D:\\GitHub\\TestRep\\javafortesters\\addressbook\\src\\test\\resources\\s.jpg"
+} ]

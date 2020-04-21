@@ -1,25 +1,52 @@
 package test.selenium.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.Expose;
+
 import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
 
+  @JsonProperty
   private int id = Integer.MAX_VALUE;
+
+
+  @Expose
+  @JsonProperty
   private String firstName = "";
+  @Expose
+  @JsonProperty
   private String lastName = "";
+  @JsonIgnore
   private String group = "";
+  @JsonIgnore
   private String companyName = "";
+  @JsonIgnore
   private String homeNumber = "";
+  @JsonProperty
   private String mobileNumber = "";
+  @JsonIgnore
   private String workNumber = "";
+  @JsonIgnore
   private String allPhones = "";
+  @Expose
+  @JsonProperty
   private String address = "";
+  @JsonIgnore
   private String emails = "";
+
+  @JsonProperty
   private String email1 = "";
+  @JsonIgnore
   private String email2 = "";
+  @JsonIgnore
   private String email3 = "";
+  @JsonIgnore
   private String infoPageText = "";
+  @Expose
+  @JsonProperty
   private File photo;
 
   public int getId() {
@@ -55,7 +82,7 @@ public class ContactData {
   public String getAddress() {
     return address;
   }
-  public String getEmail() {
+  public String getEmails() {
     return emails;
   }
   public String getEmail1() {
@@ -145,9 +172,12 @@ public class ContactData {
             "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", mobileNumber='" + mobileNumber + '\'' +
             ", allPhones='" + allPhones + '\'' +
             ", address='" + address + '\'' +
-            ", email='" + emails + '\'' +
+            ", emails='" + emails + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", photo=" + photo +
             '}';
   }
 
@@ -159,13 +189,17 @@ public class ContactData {
     return id == that.id &&
             Objects.equals(firstName, that.firstName) &&
             Objects.equals(lastName, that.lastName) &&
+            Objects.equals(mobileNumber, that.mobileNumber) &&
             Objects.equals(allPhones, that.allPhones) &&
             Objects.equals(address, that.address) &&
-            Objects.equals(emails, that.emails);
+            Objects.equals(emails, that.emails) &&
+            Objects.equals(email1, that.email1) &&
+            Objects.equals(photo, that.photo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName, allPhones, address, emails);
+    return Objects.hash(id, firstName, lastName, mobileNumber, allPhones, address, emails, email1, photo);
   }
+
 }
