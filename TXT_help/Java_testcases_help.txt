@@ -197,4 +197,18 @@ Change type method to new attach
 26. Install jcommander lib, edit config with new parameters
 27. Implement DataProvider in tests to separate test data from test execution. 
 28. Implement data generators and read data from xml/json files. Use Jackson or Gson libs for object serialazing/deserializing 
+29. Create testng.xml config file, run with gradlew test from cmd, create separated config files for groups/contacts suites
+build.gradle file should be updated as follows:  (one suite can be run from cmd as e.g. gradlew testGroups or right click config file)
+
+task testGroups(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_groups.xml'
+    }
+}
+task testContacts(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_contacts.xml'
+    }
+}
+
 

@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.Test
+
 plugins {
     id 'java'
 }
@@ -18,12 +20,17 @@ dependencies {
     implementation 'com.thoughtworks.xstream:xstream:1.4.12'
     implementation 'com.google.code.gson:gson:2.8.6'
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.0.rc1'
-
-
 }
-test {
+task testGroups(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_groups.xml'
+    }
+}
 
-    useTestNG()
+task testContacts(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_contacts.xml'
+    }
 }
 
 
