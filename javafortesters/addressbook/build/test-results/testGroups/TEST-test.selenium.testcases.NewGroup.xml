@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.selenium.testcases.NewGroup" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-04-22T21:30:50" hostname="DESKTOP-ULH6INK" time="10.14">
+  <properties/>
+  <testcase name="createBadGroup" classname="test.selenium.testcases.NewGroup" time="3.199"/>
+  <testcase name="createNewGroup[0](GroupData{groupId='2147483647', groupName='test 0'})" classname="test.selenium.testcases.NewGroup" time="2.29"/>
+  <testcase name="createNewGroup[1](GroupData{groupId='2147483647', groupName='test 1'})" classname="test.selenium.testcases.NewGroup" time="2.144"/>
+  <testcase name="createNewGroup[2](GroupData{groupId='2147483647', groupName='test 2'})" classname="test.selenium.testcases.NewGroup" time="2.115"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

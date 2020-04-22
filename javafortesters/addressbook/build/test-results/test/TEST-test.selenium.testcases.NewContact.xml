@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.NewContact" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-04-22T11:00:05" hostname="DESKTOP-ULH6INK" time="26.907">
-  <properties/>
-  <testcase name="newBadContact" classname="test.selenium.testcases.NewContact" time="15.225"/>
-  <testcase name="newContact[0](ContactData{id=2147483647, firstName='First Name 0', lastName='Last Name 0', mobileNumber='1234560', allPhones='', address='address 0', emails='', email1='0@mail.ru', photo=D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg})" classname="test.selenium.testcases.NewContact" time="5.628"/>
-  <testcase name="newContact[1](ContactData{id=2147483647, firstName='First Name 1', lastName='Last Name 1', mobileNumber='1234561', allPhones='', address='address 1', emails='', email1='1@mail.ru', photo=D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg})" classname="test.selenium.testcases.NewContact" time="5.759"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

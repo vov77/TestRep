@@ -7,9 +7,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class AppManager {
+  private final Properties properties;
   public SessionManager sessionManager;
   public NavigationManager navigationManager;
   public GroupManager groupManager;
@@ -20,9 +26,12 @@ public class AppManager {
 
   public AppManager(String browser) {
     this.browser = browser;
+    properties = new Properties();
   }
 
-  public void initial() {
+  public void initial() throws IOException {
+    String target = System.getProperty("target", "local");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     switch (browser) {
       case BrowserType.CHROME:
@@ -37,13 +46,12 @@ public class AppManager {
     }
 
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    wait = new WebDriverWait(driver,10);
+    driver.get(properties.getProperty("web.baseUrl"));
     groupManager = new GroupManager(driver);
     contactManager = new ContactManager(driver);
     navigationManager = new NavigationManager(driver);
     sessionManager = new SessionManager(driver);
-    //login
-    sessionManager.login("admin", "secret");
+    sessionManager.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
 
   public void finish() {

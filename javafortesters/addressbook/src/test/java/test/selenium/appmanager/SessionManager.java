@@ -12,7 +12,6 @@ public class SessionManager extends BaseManager{
   }
 
   public void login(String username, String password) {
-    driver.navigate().to("http://localhost/addressbook/");
     type(By.name("user"), username);
     type(By.name("pass"), password );
     click(By.xpath("//input[@value='Login']"));

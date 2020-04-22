@@ -25,11 +25,24 @@ task testGroups(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_groups.xml'
     }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
+
 }
 
 task testContacts(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_contacts.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
     }
 }
 

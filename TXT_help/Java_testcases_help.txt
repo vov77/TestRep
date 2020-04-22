@@ -211,4 +211,26 @@ task testContacts(type: Test) {
     }
 }
 
+30. Add test run config from cmd for browser selection- 
+ - updated TestBase with new AppManager(System.getProperty("browser", BrowserType.CHROME))
+-  added to build.gradle systemProperty 'browser', "${browser}")
+- in cmd run gradlew -Pbrowser=chrome testGroups
+
+Also add local.properties file to be able to run with different login variations:
+- in cmd gradlew -Ptarget=local testGroups
+- in build.gradle add systemProperty 'target', "${target}"
+- create new filein resources local.properties and add
+web.baseUrl = http://localhost/addressbook
+web.adminLogin = admin
+web.adminPassword = secret
+- update AppManager to use login parameters from local.properties:
+String target = System.getProperty("target", "local");
+properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+driver.get(properties.getProperty("web.baseUrl"));
+sessionManager.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+
+31.
+
+
 

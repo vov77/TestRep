@@ -7,7 +7,8 @@ import test.selenium.appmanager.AppManager;
 
 public class TestBase {
 
-  protected static final AppManager app = new AppManager(BrowserType.CHROME);
+  protected static final AppManager app =
+          new AppManager(System.getProperty("browser", BrowserType.CHROME));
 
   public static AppManager getApp() {
     return app;
