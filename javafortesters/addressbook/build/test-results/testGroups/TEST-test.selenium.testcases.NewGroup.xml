@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.NewGroup" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-04-22T21:30:50" hostname="DESKTOP-ULH6INK" time="10.14">
+<testsuite name="test.selenium.testcases.NewGroup" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-05-04T12:57:53" hostname="DESKTOP-ULH6INK" time="34.99">
   <properties/>
-  <testcase name="createBadGroup" classname="test.selenium.testcases.NewGroup" time="3.199"/>
-  <testcase name="createNewGroup[0](GroupData{groupId='2147483647', groupName='test 0'})" classname="test.selenium.testcases.NewGroup" time="2.29"/>
-  <testcase name="createNewGroup[1](GroupData{groupId='2147483647', groupName='test 1'})" classname="test.selenium.testcases.NewGroup" time="2.144"/>
-  <testcase name="createNewGroup[2](GroupData{groupId='2147483647', groupName='test 2'})" classname="test.selenium.testcases.NewGroup" time="2.115"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="createBadGroup" classname="test.selenium.testcases.NewGroup" time="31.197"/>
+  <testcase name="createNewGroup[0](GroupData{groupId='2147483647', groupName='test 0'})" classname="test.selenium.testcases.NewGroup" time="1.197"/>
+  <testcase name="createNewGroup[1](GroupData{groupId='2147483647', groupName='test 1'})" classname="test.selenium.testcases.NewGroup" time="1.151"/>
+  <testcase name="createNewGroup[2](GroupData{groupId='2147483647', groupName='test 2'})" classname="test.selenium.testcases.NewGroup" time="1.14"/>
+  <system-out><![CDATA[15:57:53.027 [Test worker] INFO  test.selenium.testcases.TestBase - Start test createBadGroup with parameters[]
+15:57:53.029 [Test worker] DEBUG FileLogger - Start test createBadGroup
+15:58:24.230 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test createBadGroup
+15:58:24.230 [Test worker] DEBUG FileLogger - Stop test createBadGroup
+15:58:24.528 [Test worker] INFO  test.selenium.testcases.TestBase - Start test createNewGroup with parameters[GroupData{groupId='2147483647', groupName='test 0'}]
+15:58:24.528 [Test worker] DEBUG FileLogger - Start test createNewGroup
+15:58:25.726 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test createNewGroup
+15:58:25.727 [Test worker] DEBUG FileLogger - Stop test createNewGroup
+15:58:25.728 [Test worker] INFO  test.selenium.testcases.TestBase - Start test createNewGroup with parameters[GroupData{groupId='2147483647', groupName='test 1'}]
+15:58:25.728 [Test worker] DEBUG FileLogger - Start test createNewGroup
+15:58:26.880 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test createNewGroup
+15:58:26.880 [Test worker] DEBUG FileLogger - Stop test createNewGroup
+15:58:26.880 [Test worker] INFO  test.selenium.testcases.TestBase - Start test createNewGroup with parameters[GroupData{groupId='2147483647', groupName='test 2'}]
+15:58:26.881 [Test worker] DEBUG FileLogger - Start test createNewGroup
+15:58:28.022 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test createNewGroup
+15:58:28.022 [Test worker] DEBUG FileLogger - Stop test createNewGroup
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

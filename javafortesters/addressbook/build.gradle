@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.testing.Test
-
 plugins {
     id 'java'
 }
@@ -20,7 +18,16 @@ dependencies {
     implementation 'com.thoughtworks.xstream:xstream:1.4.12'
     implementation 'com.google.code.gson:gson:2.8.6'
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.0.rc1'
+    implementation 'mysql:mysql-connector-java:5.1.38'
+    //implementation 'mysql:mysql-connector-java:8.0.19'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+
+
 }
+test {
+    useTestNG {}
+}
+
 task testGroups(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng_groups.xml'

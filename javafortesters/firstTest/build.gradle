@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.testng:testng:7.0.0'
+    compile 'org.testng:testng:7.1.0'
 
 }
 test {

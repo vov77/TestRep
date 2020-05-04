@@ -1,7 +1,6 @@
 package test.selenium.testcases;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -11,12 +10,14 @@ import org.testng.annotations.Test;
 import test.selenium.model.GroupData;
 import test.selenium.model.Groups;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -101,7 +102,6 @@ public class NewGroup extends TestBase {
     assertThat(after.size(), equalTo(before.size()+1));
     group.withId(after.stream().mapToInt(GroupData::getGroupId).max().getAsInt());
    // Assert.assertEquals(before, after);
-
   }
 
   @Test

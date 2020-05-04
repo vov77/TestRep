@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.selenium.testcases.NewContact" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-05-04T12:54:50" hostname="DESKTOP-ULH6INK" time="45.417">
+  <properties/>
+  <testcase name="newBadContact" classname="test.selenium.testcases.NewContact" time="34.708"/>
+  <testcase name="newContact[0](ContactData{id=2147483647, firstName='First Name 0', lastName='Last Name 0', mobileNumber='1234560', allPhones='', address='address 0', emails='', email1='0@mail.ru', photo=D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg})" classname="test.selenium.testcases.NewContact" time="5.189"/>
+  <testcase name="newContact[1](ContactData{id=2147483647, firstName='First Name 1', lastName='Last Name 1', mobileNumber='1234561', allPhones='', address='address 1', emails='', email1='1@mail.ru', photo=D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg})" classname="test.selenium.testcases.NewContact" time="5.26"/>
+  <system-out><![CDATA[15:54:50.269 [Test worker] INFO  test.selenium.testcases.TestBase - Start test newBadContact with parameters[]
+15:54:50.271 [Test worker] DEBUG FileLogger - Start test newBadContact
+15:55:24.984 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test newBadContact
+15:55:24.984 [Test worker] DEBUG FileLogger - Stop test newBadContact
+15:55:25.238 [Test worker] INFO  test.selenium.testcases.TestBase - Start test newContact with parameters[ContactData{id=2147483647, firstName='First Name 0', lastName='Last Name 0', mobileNumber='1234560', allPhones='', address='address 0', emails='', email1='0@mail.ru', photo=D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg}]
+15:55:25.239 [Test worker] DEBUG FileLogger - Start test newContact
+15:55:30.429 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test newContact
+15:55:30.429 [Test worker] DEBUG FileLogger - Stop test newContact
+15:55:30.430 [Test worker] INFO  test.selenium.testcases.TestBase - Start test newContact with parameters[ContactData{id=2147483647, firstName='First Name 1', lastName='Last Name 1', mobileNumber='1234561', allPhones='', address='address 1', emails='', email1='1@mail.ru', photo=D:\GitHub\TestRep\javafortesters\addressbook\src\test\resources\s.jpg}]
+15:55:30.430 [Test worker] DEBUG FileLogger - Start test newContact
+15:55:35.691 [Test worker] INFO  test.selenium.testcases.TestBase - Stop test newContact
+15:55:35.691 [Test worker] DEBUG FileLogger - Stop test newContact
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

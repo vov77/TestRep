@@ -229,8 +229,15 @@ properties.load(new FileReader(new File(String.format("src/test/resources/%s.pro
 
 driver.get(properties.getProperty("web.baseUrl"));
 sessionManager.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+------------------------------------------------------------------------------------------------------------------------------------------
 
-31.
+DATA BASE
+
+31. Add implementation 'mysql:mysql-connector-java:5.1.38' dependency 
+(got time zone error with the latest version!! possibly can be fixed with + "db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-connect-drivermanager.html
+
+32.
 
 
 
