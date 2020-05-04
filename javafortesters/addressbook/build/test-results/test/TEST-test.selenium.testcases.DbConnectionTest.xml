@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.selenium.testcases.DbConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-04T17:20:21" hostname="DESKTOP-ULH6INK" time="0.316">
-  <properties/>
-  <testcase name="testDbConnection" classname="test.selenium.testcases.DbConnectionTest" time="0.316"/>
-  <system-out><![CDATA[[GroupData{groupId='1', groupName='test 0'}, GroupData{groupId='2', groupName='test 1'}, GroupData{groupId='3', groupName='test 2'}]
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

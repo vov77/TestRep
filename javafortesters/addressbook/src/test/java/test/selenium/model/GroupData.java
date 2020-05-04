@@ -3,23 +3,42 @@ package test.selenium.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+//mapping BD name to be used by Hibernate
+@Entity
+@Table(name = "group_list")
 public class GroupData {
+  //mapping BD fields to be used by Hibernate
+  @Id
+  @Column(name = "group_id")
   //ignore fields using FasterXML Jackson
   @JsonIgnore
   private int groupId = Integer.MAX_VALUE;
+
   //mark fields to be included in json using Gson
   @Expose
-  //rename fields to correctly map with xml using FasterXML Jackson
+    //rename fields to correctly map with xml using FasterXML Jackson
   @JsonProperty("name")
+  @Column(name = "group_name")
   private String groupName;
+
   @Expose
   @JsonProperty("header")
+  @Column(name = "group_header")
+  @Type(type = "text")
   private String groupHeader;
+
   @Expose
   @JsonProperty("footer")
+  @Column(name = "group_footer")
+  @Type(type = "text")
   private String groupFooter;
 
   public int getGroupId() {
