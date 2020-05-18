@@ -65,29 +65,29 @@ public class NewContact extends TestBase {
   @Test(dataProvider = "validContactsFromJson")
     public void newContact(ContactData contact) {
     app.goTo().contacts();
-    Contacts before = app.contact().set();
+    Contacts before = app.db().contacts();
     app.contact().create(contact, true);
     app.goTo().contacts();
     assertThat(app.contact().count(), equalTo(before.size()+1 ));
-    Contacts after = app.contact().set();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(new ContactData()
             .withId((after.stream().mapToInt(ContactData::getId).max().getAsInt()))
             .withFirstName(contact.getFirstName()).withLastName(contact.getLastName())
-            .withAllPhones(contact.getMobileNumber()) // temporary hack - get mobile number to check all phones
-            .withEmails(contact.getEmail1()) // temporary hack - get email1 to check emails
+            .withMobileNumber(contact.getMobileNumber())//withAllPhones(contact.getMobileNumber()) // temporary hack - get mobile number to check all phones
+            .withEmail1(contact.getEmail1())//withEmails(contact.getEmail1()) // temporary hack - get email1 to check all emails
             .withAddress(contact.getAddress()))));
   }
 
-  @Test
+  @Test(alwaysRun = false)
   public void newBadContact() {
 
     app.goTo().contacts();
-    Contacts before = app.contact().set();
-    ContactData contact = new ContactData().withFirstName("'");
+    Contacts before = app.db().contacts();
+    ContactData contact = new ContactData().withFirstName("'").withPhoto(new File("D:\\GitHub\\TestRep\\javafortesters\\addressbook\\src\\test\\resources\\s.jpg"));
     app.contact().create(contact, true);
     app.goTo().contacts();
     assertThat(app.contact().count(), equalTo (before.size() ));
-    Contacts after = app.contact().set();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before));
     app.goTo().contacts();
   }

@@ -93,11 +93,11 @@ public class NewGroup extends TestBase {
   @Test (dataProvider = "validGroupsFromXml2")
   public void createNewGroup(GroupData group){
     app.goTo().groups();
-    Groups before = app.group().set();
+    Groups before = app.db().groups();
     app.group().create(group);
     app.goTo().groups();
     assertThat(app.group().count(), equalTo(before.size()+1));
-    Groups after = app.group().set();
+    Groups after = app.db().groups();
     // Assert.assertEquals(after.size(), before.size()+1 );
     assertThat(after.size(), equalTo(before.size()+1));
     group.withId(after.stream().mapToInt(GroupData::getGroupId).max().getAsInt());

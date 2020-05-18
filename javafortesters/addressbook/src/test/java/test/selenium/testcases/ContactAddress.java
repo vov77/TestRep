@@ -15,7 +15,7 @@ public class ContactAddress extends TestBase{
   @BeforeMethod
   public void preconditions() {
     app.goTo().contacts();
-    if (app.contact().list().size() == 0){
+    if (app.db().contacts().size() == 0){
       app.contact().create(new ContactData().withFirstName("Test19").withLastName("Test99")
               .withCompanyName("Test999"), true);
     }

@@ -243,6 +243,7 @@ Add annotations to GroupData class to setup BD name and fields mapping
 https://docs.jboss.org/hibernate/orm/5.4/quickstart/html_single/#tutorial-native
 https://www.tutorialspoint.com/hibernate/hibernate_query_language.htm
 
-
-
-
+33. Added DbManager class to appmanager package with Db session start and getting Groups/Contacts from Db
+Also added  public DbManager db() {return dbManager;} initialization inside AppManager
+Added new constructors in Groups/Contacts classes to be able to switch to Groups before = app.db().groups(); and Contacts before = app.db().contacts();
+Changed this for all test cases.

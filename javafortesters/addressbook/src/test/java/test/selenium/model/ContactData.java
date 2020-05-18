@@ -3,51 +3,84 @@ package test.selenium.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
 
   @JsonProperty
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
 
 
   @Expose
   @JsonProperty
+  @Column(name = "firstname")
   private String firstName = "";
   @Expose
   @JsonProperty
+  @Column(name = "lastname")
   private String lastName = "";
+
   @JsonIgnore
+  @Transient
   private String group = "";
+
   @JsonIgnore
+  @Transient
   private String companyName = "";
   @JsonIgnore
+  @Column(name = "home")
+  @Type(type = "text")
   private String homeNumber = "";
   @JsonProperty
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobileNumber = "";
   @JsonIgnore
+  @Column(name = "work")
+  @Type(type = "text")
   private String workNumber = "";
+
   @JsonIgnore
+  @Transient
   private String allPhones = "";
   @Expose
   @JsonProperty
+  @Column(name = "address")
+  @Type(type = "text")
   private String address = "";
   @JsonIgnore
+  @Transient
   private String emails = "";
 
   @JsonProperty
+  @Column(name = "email")
+  @Type(type = "text")
   private String email1 = "";
   @JsonIgnore
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2 = "";
   @JsonIgnore
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email3 = "";
   @JsonIgnore
+  @Transient
   private String infoPageText = "";
+
   @Expose
   @JsonProperty
-  private File photo;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   public int getId() {
     return id;
@@ -98,7 +131,7 @@ public class ContactData {
     return infoPageText;
   }
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData withId(int id) {
@@ -161,24 +194,11 @@ public class ContactData {
     this.infoPageText = infoPageText;
     return this;
   }
-  public ContactData withPhoto(File photo) {
-    this.photo = photo;
-    return this;
-  }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", mobileNumber='" + mobileNumber + '\'' +
-            ", allPhones='" + allPhones + '\'' +
-            ", address='" + address + '\'' +
-            ", emails='" + emails + '\'' +
-            ", email1='" + email1 + '\'' +
-            ", photo=" + photo +
-            '}';
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
   }
 
   @Override
@@ -189,17 +209,36 @@ public class ContactData {
     return id == that.id &&
             Objects.equals(firstName, that.firstName) &&
             Objects.equals(lastName, that.lastName) &&
+            Objects.equals(companyName, that.companyName) &&
+            Objects.equals(homeNumber, that.homeNumber) &&
             Objects.equals(mobileNumber, that.mobileNumber) &&
-            Objects.equals(allPhones, that.allPhones) &&
+            Objects.equals(workNumber, that.workNumber) &&
             Objects.equals(address, that.address) &&
-            Objects.equals(emails, that.emails) &&
             Objects.equals(email1, that.email1) &&
-            Objects.equals(photo, that.photo);
+            Objects.equals(email2, that.email2) &&
+            Objects.equals(email3, that.email3);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName, mobileNumber, allPhones, address, emails, email1, photo);
+    return Objects.hash(id, firstName, lastName, companyName, homeNumber, mobileNumber, workNumber, address, email1, email2, email3);
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", companyName='" + companyName + '\'' +
+            ", homeNumber='" + homeNumber + '\'' +
+            ", mobileNumber='" + mobileNumber + '\'' +
+            ", workNumber='" + workNumber + '\'' +
+            ", address='" + address + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            '}';
   }
 
 }

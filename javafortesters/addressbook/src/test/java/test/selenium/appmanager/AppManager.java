@@ -24,6 +24,10 @@ public class AppManager {
   public WebDriverWait wait;
   public String browser;
 
+
+
+  private DbManager dbManager;
+
   public AppManager(String browser) {
     this.browser = browser;
     properties = new Properties();
@@ -32,6 +36,8 @@ public class AppManager {
   public void initial() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+    dbManager = new DbManager();
 
     switch (browser) {
       case BrowserType.CHROME:
@@ -52,6 +58,7 @@ public class AppManager {
     navigationManager = new NavigationManager(driver);
     sessionManager = new SessionManager(driver);
     sessionManager.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+
   }
 
   public void finish() {
@@ -62,17 +69,17 @@ public class AppManager {
   public GroupManager group() {
     return groupManager;
   }
-
+  public ContactManager contact() {
+    return contactManager;
+  }
   public NavigationManager goTo() {
     return navigationManager;
   }
-
   public SessionManager session() {
     return sessionManager;
   }
-
-  public ContactManager contact() {
-    return contactManager;
+  public DbManager db() {
+    return dbManager;
   }
 
 

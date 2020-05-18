@@ -2,7 +2,9 @@ package test.selenium.model;
 
 import com.google.common.collect.ForwardingSet;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 //делаем класс, который работает как Set, но расширяет его нашими методами
@@ -36,6 +38,12 @@ public class Groups extends ForwardingSet <GroupData> {
   public Groups() {
     delegate = new HashSet<GroupData>();
   }
+
+  public Groups(Collection<GroupData> groups) {
+    this.delegate = new HashSet<GroupData>(groups);
+  }
+
+
 
 // добавляем свои методы - передаем объект типа GroupData, возвращаем объек типа Groups чтобы делать цепочки/каскады
 // делаем копию - старый объект остается неизменным, возвращаем новый объект с добавленной новой группой
