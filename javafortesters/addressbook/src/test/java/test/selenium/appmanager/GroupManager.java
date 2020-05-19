@@ -54,13 +54,13 @@ public class GroupManager extends BaseManager {
     groupCache = null;
     getApp().goTo().groups();
   }
-
   public void delete(GroupData group) {
     selectById(group.getGroupId());
     submitToDelete();
     groupCache = null;
     getApp().goTo().groups();
   }
+
   public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<>();
     List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));

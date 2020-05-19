@@ -42,7 +42,7 @@ public class ModifyContact extends TestBase {
             .withId(contact.getId()).withFirstName(contact.getFirstName()).withLastName(contact.getLastName())
             .withMobileNumber(contact.getMobileNumber()).withAddress(contact.getAddress())
             .withEmail1(contact.getEmail1()).withPhoto(contact.getPhoto()))));
-
+    verifyContactsUi();
   }
 
 

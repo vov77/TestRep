@@ -247,3 +247,6 @@ https://www.tutorialspoint.com/hibernate/hibernate_query_language.htm
 Also added  public DbManager db() {return dbManager;} initialization inside AppManager
 Added new constructors in Groups/Contacts classes to be able to switch to Groups before = app.db().groups(); and Contacts before = app.db().contacts();
 Changed this for all test cases.
+
+34. Created new methods in TestBase public void verifyGroupsUi() and public void verifyContactsUi() to compare data from DB and UI.
+Added verifyUI parameter to Configuration and gradle.build to be able to turn on/off verification.
