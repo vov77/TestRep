@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import test.selenium.model.ContactData;
 import test.selenium.model.Contacts;
 import test.selenium.model.GroupData;
+import test.selenium.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -83,7 +84,10 @@ public class NewContact extends TestBase {
 
     app.goTo().contacts();
     Contacts before = app.db().contacts();
-    ContactData contact = new ContactData().withFirstName("'").withPhoto(new File("D:\\GitHub\\TestRep\\javafortesters\\addressbook\\src\\test\\resources\\s.jpg"));
+    Groups groups = app.db().groups();
+    ContactData contact = new ContactData().withFirstName("'")
+            .withPhoto(new File("D:\\GitHub\\TestRep\\javafortesters\\addressbook\\src\\test\\resources\\s.jpg"))
+            .inGroup(groups.iterator().next());
     app.contact().create(contact, true);
     app.goTo().contacts();
     assertThat(app.contact().count(), equalTo (before.size() ));

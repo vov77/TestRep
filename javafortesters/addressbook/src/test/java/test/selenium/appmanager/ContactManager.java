@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import test.selenium.model.ContactData;
 import test.selenium.model.Contacts;
 
@@ -75,7 +76,10 @@ public class ContactManager extends BaseManager{
     attach(By.name("photo"), contactData.getPhoto()); //*[@id="content"]/form[1]/input[7]
     //select group dropdown
     if (creation) {
-      new Select((driver.findElement(By.name("new_group")))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0){
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select((driver.findElement(By.name("new_group")))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       assertFalse(isElementPresent(By.name("new_group")));
     }

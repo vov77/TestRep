@@ -7,7 +7,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -29,8 +31,15 @@ public class ContactData {
   private String lastName = "";
 
   @JsonIgnore
-  @Transient
-  private String group = "";
+  @ManyToMany (fetch = FetchType.EAGER)
+  @JoinTable (name = "address_in_groups", joinColumns = @JoinColumn(name = "id")
+          , inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<>();
+
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
+
 
   @JsonIgnore
   @Transient
@@ -94,12 +103,6 @@ public class ContactData {
   public String getCompanyName() {
     return companyName;
   }
-  public String getGroup() {
-    if (group.equals(""))
-      return "[none]";
-    else return group;
-        //else return "[none]";
-  }
   public String getHomeNumber() {
     return homeNumber;
   }
@@ -144,10 +147,6 @@ public class ContactData {
   }
   public ContactData withLastName(String lastName) {
     this.lastName = lastName;
-    return this;
-  }
-  public ContactData withGroup(String group) {
-    this.group = group;
     return this;
   }
   public ContactData withCompanyName(String companyName) {
@@ -241,4 +240,8 @@ public class ContactData {
             '}';
   }
 
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 }

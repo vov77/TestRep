@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 //mapping BD name to be used by Hibernate
 @Entity
@@ -52,6 +51,15 @@ public class GroupData {
   }
   public String getFooter() {
     return groupFooter;
+  }
+
+
+
+  @ManyToMany(mappedBy = "groups")
+  private Set<ContactData> contacts = new HashSet<ContactData>();
+
+  public Contacts getContacts() {
+    return new Contacts(contacts);
   }
 
   //Setters updated to return current object, thus all constructors can be deleted

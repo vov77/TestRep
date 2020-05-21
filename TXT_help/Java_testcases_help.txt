@@ -248,5 +248,15 @@ Also added  public DbManager db() {return dbManager;} initialization inside AppM
 Added new constructors in Groups/Contacts classes to be able to switch to Groups before = app.db().groups(); and Contacts before = app.db().contacts();
 Changed this for all test cases.
 
-34. Created new methods in TestBase public void verifyGroupsUi() and public void verifyContactsUi() to compare data from DB and UI.
+34. Created new methods in TestBase - public void verifyGroupsUi() and public void verifyContactsUi() to compare data from DB and UI.
 Added verifyUI parameter to Configuration and gradle.build to be able to turn on/off verification.
+
+35. Greated mapping to link Contacts with Groups to track contacts added to groups 
+
+  @ManyToMany (fetch = FetchType.EAGER)
+  @JoinTable (name = "address_in_groups", joinColumns = @JoinColumn(name = "id")
+          , inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<>();
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
