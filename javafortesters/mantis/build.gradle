@@ -15,6 +15,8 @@ dependencies {
     compile 'org.testng:testng:7.1.0'
     compile 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-5'
     compile 'org.hamcrest:hamcrest:2.2'
+    implementation 'org.apache.httpcomponents:httpclient-win:4.5.12'
+
 }
 test {
     useTestNG(){

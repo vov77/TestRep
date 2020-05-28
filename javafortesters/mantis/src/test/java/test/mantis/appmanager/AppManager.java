@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import test.mantis.testcases.TestBase;
 
 import java.io.File;
 import java.io.FileReader;
@@ -15,9 +15,9 @@ import java.util.concurrent.TimeUnit;
 
 public class AppManager {
   private final Properties properties;
-  public WebDriver driver;
-  public WebDriverWait wait;
-  public String browser;
+  private WebDriver driver;
+  private String browser;
+  private RegistrationManager registrationManager;
 
 
   public AppManager(String browser) {
@@ -28,27 +28,47 @@ public class AppManager {
   public void initial() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
-    switch (browser) {
-      case BrowserType.CHROME:
-        driver = new ChromeDriver();
-        break;
-      case BrowserType.EDGE:
-        driver = new EdgeDriver();
-        break;
-      case BrowserType.FIREFOX:
-        driver = new FirefoxDriver();
-        break;
-    }
-
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    driver.get(properties.getProperty("web.baseUrl"));
   }
 
   public void finish() {
-    driver.close();
-    driver = null;
+    if (driver != null){
+      driver.quit();
+      driver = null;
+    }
+   }
+
+  public HttpSession newSession() {
+    return new HttpSession(this);
   }
 
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
+
+  public RegistrationManager registration() {
+    if (registrationManager == null){
+      registrationManager = new RegistrationManager(this);
+    }
+    return registrationManager;
+  }
+
+  public WebDriver getDriver() {
+    if (driver == null) {
+      switch (browser) {
+        case BrowserType.CHROME:
+          driver = new ChromeDriver();
+          break;
+        case BrowserType.EDGE:
+          driver = new EdgeDriver();
+          break;
+        case BrowserType.FIREFOX:
+          driver = new FirefoxDriver();
+          break;
+                }
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      driver.get(properties.getProperty("web.baseUrl"));
+    }
+    return driver;
+  }
 }
 

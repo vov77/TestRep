@@ -259,4 +259,14 @@ Added verifyUI parameter to Configuration and gradle.build to be able to turn on
   private Set<GroupData> groups = new HashSet<>();
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
+Network protocols
+
+36. Created tests template from addressbook test cases (gradle, TestBase, AppManager, local.properties)
+
+37. HTTP
+
+Implemented HttpSession in appmanager with apache.httpcomponents added to dependencies 
+https://hc.apache.org/
+Created login test case with asserts 
+Created Registration Manager and RegistrationTest with lazy driver initialisation
 
