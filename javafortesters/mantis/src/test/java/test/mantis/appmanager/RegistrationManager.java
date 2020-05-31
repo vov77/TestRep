@@ -13,6 +13,6 @@ public class RegistrationManager {
   }
 
   public void start(String username, String email) {
-    driver.get(app.getProperty("web.baseUrl") + "signup_page.php");
+    driver.get(app.getProperty("web.baseUrl") + "/signup_page.php");
   }
 }

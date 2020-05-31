@@ -18,7 +18,7 @@ public class AppManager {
   private WebDriver driver;
   private String browser;
   private RegistrationManager registrationManager;
-
+  private FtpManager ftp;
 
   public AppManager(String browser) {
     this.browser = browser;
@@ -50,6 +50,13 @@ public class AppManager {
       registrationManager = new RegistrationManager(this);
     }
     return registrationManager;
+  }
+
+  public FtpManager ftp() {
+    if (ftp == null){
+      ftp = new FtpManager(this);
+    }
+    return ftp;
   }
 
   public WebDriver getDriver() {

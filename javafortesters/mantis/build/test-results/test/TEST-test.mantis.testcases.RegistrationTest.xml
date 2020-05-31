@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.mantis.testcases.RegistrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-28T14:06:59" hostname="DESKTOP-ULH6INK" time="12.063">
+<testsuite name="test.mantis.testcases.RegistrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-29T19:08:11" hostname="DESKTOP-ULH6INK" time="124.528">
   <properties/>
-  <testcase name="testRegistration" classname="test.mantis.testcases.RegistrationTest" time="12.063"/>
+  <testcase name="testRegistration" classname="test.mantis.testcases.RegistrationTest" time="124.528"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Starting ChromeDriver 81.0.4044.69 (6813546031a4bc83f717a2ef7cd4ac6ec1199132-refs/branch-heads/4044@{#776}) on port 21481
+Starting ChromeDriver 81.0.4044.69 (6813546031a4bc83f717a2ef7cd4ac6ec1199132-refs/branch-heads/4044@{#776}) on port 14194
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-May 28, 2020 5:07:07 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+May 29, 2020 10:08:35 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-[1590674830.454][SEVERE]: Timed out receiving message from renderer: 0.100
-[1590674830.555][SEVERE]: Timed out receiving message from renderer: 0.100
-[1590674830.656][SEVERE]: Timed out receiving message from renderer: 0.100
-[1590674830.801][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779316.436][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779316.538][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779316.640][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779316.741][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779316.842][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779317.535][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590779317.636][SEVERE]: Timed out receiving message from renderer: 0.100
 ]]></system-err>
 </testsuite>
