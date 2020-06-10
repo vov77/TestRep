@@ -270,5 +270,12 @@ https://hc.apache.org/
 Created login test case with asserts 
 Created Registration Manager and RegistrationTest with lazy driver initialisation
 
-38. FTP
+38. Implemented FTP to copy config file to server with Capture OFF
+
+implementation 'commons-net:commons-net:3.6'
+
+39. Implemented local SMTP to check that mail is received when new user is registered
+
+    implementation 'org.subethamail:subethasmtp:3.1.7'
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
 

@@ -19,6 +19,7 @@ public class AppManager {
   private String browser;
   private RegistrationManager registrationManager;
   private FtpManager ftp;
+  private MailManager mailManager;
 
   public AppManager(String browser) {
     this.browser = browser;
@@ -76,6 +77,13 @@ public class AppManager {
       driver.get(properties.getProperty("web.baseUrl"));
     }
     return driver;
+  }
+
+  public MailManager mail(){
+    if (mailManager == null) {
+      mailManager = new MailManager(this);
+    }
+    return mailManager;
   }
 }
 

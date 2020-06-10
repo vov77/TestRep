@@ -42,7 +42,10 @@ public class HttpSession {
     // verification that the page contains text with username (administrator)
     String body = getTextFrom(response);
     //System.out.println(body);
-    return body.contains(String.format("span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
+    //for admin
+    //return body.contains(String.format("span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
+    //for new user
+    return body.contains(String.format("span class=\"user-info\">%s</span>", username));
   }
 
   public boolean isLoggedInAs (String username) throws IOException {

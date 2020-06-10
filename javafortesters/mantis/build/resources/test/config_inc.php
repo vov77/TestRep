@@ -10,3 +10,6 @@ $g_default_timezone       = 'Europe/Moscow';
 $g_crypto_master_salt     = 'l5rw9tCZDEb+KZvhG9fWza7Nc4LSURgS9pdYcKwg6kE=';
 
 $g_signup_use_captcha = OFF;
+
+$g_phpMailer_method = PHPMAILER_METHOD_SMTP;
+$g_smtp_host = 'localhost';
